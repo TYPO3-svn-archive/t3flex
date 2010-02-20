@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/halo" minWidth="1024" minHeight="768" xmlns:layout="de.wwsc.t3flex.examples.T3TimeMachine.layout.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import de.wwsc.t3flex.examples.T3TimeMachine.model.MainApplicationModel;
+			import de.wwsc.t3flex.examples.T3TimeMachine.controller.MainApplicationController;
+
+			[Bindable]
+			public var model:MainApplicationModel = new MainApplicationModel(this);
+
+			public var controller:MainApplicationController = new MainApplicationController(this,model);
+		]]>
+	</fx:Script>
+	<s:List id="timeMachine" caretChange="controller.timeMachine_caretChangeHandler(event)"
+			scroller="{null}"
+			dataProvider="{model.content}" itemRenderer="de.wwsc.t3flex.examples.T3TimeMachine.view.NewsItemRenderer" width="50%" height="50%" left="200" top="10">
+		<s:layout>
+			<layout:TimeMachineLayout distance="{ distanceSlider.value }"
+									  index="{ timeMachine.selectedIndex }"
+									  horizontalDisplacement="{horizontalDisplacementSlider.value}"
+									  verticalDisplacement="{verticalDisplacementSlider.value}">
+
+			</layout:TimeMachineLayout>
+		</s:layout>
+	</s:List>
+	<s:VGroup paddingLeft="10" paddingTop="10">
+		<s:VGroup>
+			<s:Button label="Load tt_news" click="{model.loadTt_news()}"/>
+			<s:Button label="Load tt_content" click="{model.loadTt_content()}" />
+		</s:VGroup>
+		<s:VGroup >
+			<s:List id="panels"
+					selectedIndex="{timeMachine.selectedIndex}"
+					dataProvider="{model.content}"
+					change="timeMachine.selectedIndex = event.newIndex" />
+
+			<s:Label text="Index" />
+			<s:HSlider id="indexSlider"
+					   minimum="0"
+					   maximum="{model.content.length - 1}"
+					   stepSize="1"
+					   liveDragging="true"
+					   value="@{ timeMachine.selectedIndex }" />
+			<s:HGroup>
+				<s:Button label="Prev"
+						  enabled="{timeMachine.selectedIndex > 0}"
+						  click="timeMachine.selectedIndex -= 1" />
+				<s:Button label="Next"
+						  enabled="{timeMachine.selectedIndex &lt; model.content.length - 1}"
+						  click="timeMachine.selectedIndex += 1" />
+			</s:HGroup>
+		</s:VGroup>
+
+		<s:VGroup
+				  >
+			<s:Label text="Distance" />
+			<s:HSlider id="distanceSlider"
+					   minimum="1"
+					   maximum="300"
+					   value="150"
+					   liveDragging="true" />
+			<s:Label text="HorizontalDisplacement" />
+			<s:HSlider id="horizontalDisplacementSlider"
+					   minimum="-100"
+					   maximum="100"
+					   value="0"
+					   liveDragging="true" />
+			<s:Label text="VerticalDisplacement" />
+			<s:HSlider id="verticalDisplacementSlider"
+					   minimum="-100"
+					   maximum="100"
+					   value="-60"
+					   liveDragging="true" />
+		</s:VGroup>
+	</s:VGroup>
+</s:Application>

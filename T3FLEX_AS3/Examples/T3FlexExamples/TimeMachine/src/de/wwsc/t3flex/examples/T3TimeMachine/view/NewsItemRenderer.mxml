@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				cacheAsBitmap="true"
+				xmlns:mx="library://ns.adobe.com/flex/halo" width="200" height="200" xmlns:t3Standards="de.wwsc.t3flex.vo.t3Standards.*">
+	<s:states>
+		<s:State name="State1"/>
+		<s:State name="Expanded"/>
+	</s:states>
+
+	<s:transitions>
+		<s:Transition>
+			<s:Resize  targets="{[this.panel,this.bodytext]}"/>
+		</s:Transition>
+	</s:transitions> 
+
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			override public function set data(data:Object):void
+			{
+				super.data = data;
+				//trace(data.media)
+				if (data.image)
+				{
+					t3image.setImage(data.image,-1,-1,"c",T3Image.UPLOAD_DIR_TT_NEWS);
+					t3image.toolTip = data.imagecaption;
+				}
+				else
+				{
+					this.removeElement(t3image);
+				}
+			}
+		]]>
+	</fx:Script>
+
+	<s:Panel title="{data.title}" width="100%" height="100%" id="panel" width.Expanded="390" height.State1="147" height.Expanded="240">
+
+
+		<s:VGroup paddingLeft="5" paddingTop="5" height.Expanded="100%" width.Expanded="100%">
+			<t3Standards:T3Image width="190" height="50" id="t3image"/>
+			<s:Label  id="bodytext" text="{data.bodytext}" width="190"  maxDisplayedLines="1" maxDisplayedLines.Expanded="10" width.Expanded="300" height.Expanded="88"/>
+			<s:Label text="{data.dateTimeDate}"  includeIn="Expanded" fontSize="8"/>
+			<s:Button label="click" click="{currentState='Expanded'}" click.Expanded="{currentState='State1'}"  label.State1="Expand" label.Expanded="Minimize"/>
+		</s:VGroup>
+	</s:Panel>
+</s:ItemRenderer>
