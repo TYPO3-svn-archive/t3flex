@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="720cbb2e-79bd-4760-9bec-5e62cffe4f8f" projectUUID="720cbb2e-79bd-4760-9bec-5e62cffe4f8f" sdkVersion="4.0.0" uuid="efae39d4-5960-4c39-91a4-61b6a25a8ab6" version="3">
+  <projects>
+    <project filename="wwscFlexLibrary.fxpl" position="2" projectUUID="496cf69e-1efb-4e67-900f-b5638abdb197" uuid="efae39d4-5960-4c39-91a4-61b6a25a8ab6"/>
+  </projects>
+  <src/>
+  <swc>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="efae39d4-5960-4c39-91a4-61b6a25a8ab6"/>
+    <linked location="C:/Users/reimark.WWSC-LOKAL/Adobe Flash Builder Beta 2/wwscT3Flex/libs" path="/libs" position="1" uuid="09379775-c790-438a-b808-381ed338dd18"/>
+  </swc>
+  <misc/>
+  <theme/>
+</fxpProperties>

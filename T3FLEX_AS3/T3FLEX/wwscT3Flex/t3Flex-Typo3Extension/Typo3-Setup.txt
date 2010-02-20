@@ -1,0 +1,17 @@
+// SetUp a extension Template for the page that should react as the dataprovider
+
+// Insert in Constants
+// the PIDs are defining, where access is allowed
+plugin.tx_t3flex_pi1 {
+  pidList = 19,37
+  #plugin.t3flex.recursive = 1
+  
+  #writeableTables = tx_example_table
+  
+  readableTables < .writeableTables
+  readableTables := addToList(tt_news,tt_content)
+}
+
+// Insert in Setup (& and add the static template to the given page)
+page >
+page < lib.t3flex

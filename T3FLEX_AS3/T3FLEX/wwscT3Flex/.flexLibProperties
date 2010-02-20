@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" version="1">
+  <includeClasses>
+    <classEntry path="de.wwsc.t3flex.T3Flex"/>
+    <classEntry path="de.wwsc.t3flex.model.T3FlexModel"/>
+    <classEntry path="de.wwsc.t3flex.plugins.offlineCache.OfflineCacheController"/>
+    <classEntry path="de.wwsc.t3flex.plugins.offlineCache.OfflineCacheJob"/>
+    <classEntry path="de.wwsc.t3flex.plugins.offlineCache.OfflineQueryObj"/>
+    <classEntry path="de.wwsc.t3flex.vo.DataService"/>
+    <classEntry path="de.wwsc.t3flex.vo.DbHelper"/>
+    <classEntry path="de.wwsc.t3flex.vo.DbQuery"/>
+    <classEntry path="de.wwsc.t3flex.vo.FieldArray"/>
+    <classEntry path="de.wwsc.t3flex.vo.T3FlexConfiguration"/>
+    <classEntry path="de.wwsc.t3flex.vo.T3FlexPagetree"/>
+    <classEntry path="de.wwsc.t3flex.vo.T3Helper"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.T3tt_news"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.T3tt_news_cat"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.tv.T3TvBase"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.tv.TvImages"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3DbElement"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Fe_User"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Image"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Page"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Static_country"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Tt_content"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
