@@ -1,0 +1,46 @@
+a:6:{s:4:"save";a:3:{s:13:"extension_key";s:6:"t3flex";s:18:"print_wop_comments";s:1:"0";s:15:"overwrite_files";a:17:{s:9:"ChangeLog";s:1:"0";s:10:"README.txt";s:1:"0";s:12:"ext_icon.gif";s:1:"0";s:17:"ext_localconf.php";s:1:"0";s:14:"ext_tables.php";s:1:"0";s:16:"locallang_db.xml";s:1:"0";s:19:"doc/wizard_form.dat";s:1:"1";s:20:"doc/wizard_form.html";s:1:"1";s:33:"pi1/class.tx_wwscflexdata_pi1.php";s:1:"0";s:17:"pi1/locallang.xml";s:1:"0";s:14:"ext_tables.sql";s:1:"0";s:38:"icon_tx_wwscflexdata_storedqueries.gif";s:1:"0";s:7:"tca.php";s:1:"0";s:32:"icon_tx_t3flex_storedqueries.gif";s:1:"0";s:27:"pi1/class.tx_t3flex_pi1.php";s:1:"0";s:37:"static/t3flex_data_page/constants.txt";s:1:"1";s:33:"static/t3flex_data_page/setup.txt";s:1:"1";}}s:6:"emconf";a:1:{i:1;a:7:{s:5:"title";s:6:"T3Flex";s:11:"description";s:48:"TYPO3 data interface for AS3 & Flex applications";s:8:"category";s:6:"plugin";s:5:"state";s:5:"alpha";s:12:"dependencies";s:0:"";s:6:"author";s:18:"Maik Preuss / wwsc";s:12:"author_email";s:17:"typo3-dev@wwsc.de";}}s:2:"pi";a:1:{i:1;a:11:{s:5:"title";s:6:"T3Flex";s:13:"plus_user_obj";s:1:"1";s:23:"plus_not_staticTemplate";s:1:"0";s:7:"addType";s:9:"list_type";s:8:"plus_wiz";s:1:"0";s:20:"plus_wiz_description";s:19:"Flex data interface";s:8:"tag_name";s:0:"";s:12:"plus_user_ex";s:1:"0";s:12:"list_default";s:1:"0";s:21:"list_default_listmode";s:1:"0";s:23:"list_default_singlemode";s:1:"0";}}s:8:"tsconfig";a:0:{}s:2:"ts";a:1:{i:1;a:3:{s:5:"title";s:16:"T3Flex Data Page";s:9:"constants";s:104:"plugin.tx_t3flex_pi1 {
+  pidList = 0
+  recursive = 0
+
+  writeableTables = 
+  readableTables = 
+}
+";s:5:"setup";s:743:"includeLibs.ts_t3flex = EXT:t3flex/pi1/class.tx_t3flex_pi1.php
+
+lib.t3flex = PAGE
+lib.t3flex {
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-Type: text/xml
+    xhtml_cleaning = 0
+    admPanel = 0
+  }
+
+  10 = USER
+  10.userFunc = tx_t3flex_pi1->main
+
+  10 {
+    pidList = {$plugin.tx_t3flex_pi1.pidList}
+    recursive = {$plugin.tx_t3flex_pi1.recursive}
+    writeableTables = {$plugin.tx_t3flex_pi1.writeableTables}
+    readableTables = {$plugin.tx_t3flex_pi1.readableTables}
+  }
+}
+
+
+t3fleximage = PAGE
+t3fleximage {
+  typeNum = 9031
+
+  config {
+    disableAllHeaderCode = 1
+    xhtml_cleaning = 0
+    admPanel = 0
+  }
+
+  10 = USER
+  10 {
+    userFunc = tx_t3flex_pi1->main
+  }
+}
+";}}s:6:"tables";a:1:{i:1;a:19:{s:9:"tablename";s:13:"storedqueries";s:5:"title";s:14:"Stored Queries";s:11:"add_deleted";s:1:"1";s:10:"add_hidden";s:1:"0";s:13:"add_starttime";s:1:"0";s:11:"add_endtime";s:1:"0";s:10:"add_access";s:1:"0";s:12:"localization";s:1:"0";s:10:"versioning";s:1:"0";s:7:"sorting";s:1:"0";s:13:"sorting_field";s:6:"crdate";s:12:"sorting_desc";s:1:"0";s:10:"type_field";s:1:"0";s:12:"header_field";s:5:"title";s:7:"defIcon";s:11:"default.gif";s:14:"allow_on_pages";s:1:"0";s:23:"allow_ce_insert_records";s:1:"0";s:12:"save_and_new";s:1:"0";s:6:"fields";a:4:{i:1;a:9:{s:9:"fieldname";s:5:"title";s:5:"title";s:5:"Title";s:4:"type";s:5:"input";s:12:"excludeField";s:1:"0";s:7:"_DELETE";s:1:"0";s:9:"conf_size";s:0:"";s:8:"conf_max";s:0:"";s:13:"conf_required";s:1:"0";s:12:"conf_varchar";s:1:"0";}i:2;a:9:{s:9:"fieldname";s:10:"parameters";s:5:"title";s:10:"Parameters";s:4:"type";s:5:"input";s:12:"excludeField";s:1:"0";s:7:"_DELETE";s:1:"0";s:9:"conf_size";s:0:"";s:8:"conf_max";s:0:"";s:13:"conf_required";s:1:"0";s:12:"conf_varchar";s:1:"0";}i:3;a:12:{s:9:"fieldname";s:5:"query";s:5:"title";s:5:"Query";s:4:"type";s:8:"textarea";s:12:"excludeField";s:1:"0";s:7:"_DELETE";s:1:"0";s:9:"conf_size";s:0:"";s:8:"conf_max";s:0:"";s:13:"conf_required";s:1:"0";s:12:"conf_varchar";s:1:"0";s:9:"conf_cols";s:0:"";s:9:"conf_rows";s:0:"";s:16:"conf_wiz_example";s:1:"0";}i:4;a:12:{s:9:"fieldname";s:11:"description";s:5:"title";s:11:"Description";s:4:"type";s:8:"textarea";s:12:"excludeField";s:1:"0";s:7:"_DELETE";s:1:"0";s:9:"conf_size";s:0:"";s:8:"conf_max";s:0:"";s:13:"conf_required";s:1:"0";s:12:"conf_varchar";s:1:"0";s:9:"conf_cols";s:0:"";s:9:"conf_rows";s:0:"";s:16:"conf_wiz_example";s:1:"0";}}}}}

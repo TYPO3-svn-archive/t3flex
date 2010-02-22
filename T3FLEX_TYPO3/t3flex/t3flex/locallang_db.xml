@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 't3flex'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">T3Flex</label>
+			<label index="tx_t3flex_storedqueries">Stored Queries</label>
+			<label index="tx_t3flex_storedqueries.title">Title</label>
+			<label index="tx_t3flex_storedqueries.parameters">Parameters</label>
+			<label index="tx_t3flex_storedqueries.query">Query</label>
+			<label index="tx_t3flex_storedqueries.description">Description</label>
+		</languageKey>
+	</data>
+</T3locallang>

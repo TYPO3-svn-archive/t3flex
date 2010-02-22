@@ -1,0 +1,38 @@
+includeLibs.ts_t3flex = EXT:t3flex/pi1/class.tx_t3flex_pi1.php
+
+lib.t3flex = PAGE
+lib.t3flex {
+  config {
+    disableAllHeaderCode = 1
+    additionalHeaders = Content-Type: text/xml
+    xhtml_cleaning = 0
+    admPanel = 0
+  }
+
+  10 = USER
+  10.userFunc = tx_t3flex_pi1->main
+
+  10 {
+    pidList = {$plugin.tx_t3flex_pi1.pidList}
+    recursive = {$plugin.tx_t3flex_pi1.recursive}
+    writeableTables = {$plugin.tx_t3flex_pi1.writeableTables}
+    readableTables = {$plugin.tx_t3flex_pi1.readableTables}
+  }
+}
+
+
+t3fleximage = PAGE
+t3fleximage {
+  typeNum = 9031
+
+  config {
+    disableAllHeaderCode = 1
+    xhtml_cleaning = 0
+    admPanel = 0
+  }
+
+  10 = USER
+  10 {
+    userFunc = tx_t3flex_pi1->main
+  }
+}

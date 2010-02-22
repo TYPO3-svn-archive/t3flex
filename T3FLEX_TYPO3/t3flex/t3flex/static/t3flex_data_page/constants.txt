@@ -1,0 +1,7 @@
+plugin.tx_t3flex_pi1 {
+  pidList = 0
+  recursive = 0
+
+  writeableTables = 
+  readableTables = 
+}
