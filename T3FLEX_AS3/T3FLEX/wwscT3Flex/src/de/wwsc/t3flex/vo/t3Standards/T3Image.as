@@ -38,7 +38,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		private var _fullUrl : String = "";
 
-		private var imgUrl : String;
+		private var _imgUrl : String;
 
 		public static const UPLOAD_DIR_TV : String = "tx_templavoila/";
 
@@ -59,6 +59,16 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		[Bindable]
 		public var imageLink : String;
+
+		public function get imgUrl():String
+		{
+			return _imgUrl;
+		}
+
+		public function get baseUrl():String
+		{
+			return _baseUrl;
+		}
 
 		private function init() : void
 		{
@@ -190,7 +200,7 @@ package de.wwsc.t3flex.vo.t3Standards
 			init();
 			var myUrl : String =_baseUrl + "?" + _basicPIDStr + "&" + _typeStr + "&" + _noCacheStr;
 
-			imgUrl = uploadDir + getFirstImage( imgName );
+			_imgUrl = uploadDir + getFirstImage( imgName );
 			myUrl += "&" + _imgParameter + imgUrl;
 
 			// add the height
