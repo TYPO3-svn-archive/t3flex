@@ -42,7 +42,8 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		public static const UPLOAD_DIR_TV : String = "tx_templavoila/";
 
-		public static const UPLOAD_DIR_FE_USER : String = "tx_srfeuserregister/";
+		public static const UPLOAD_DIR_FE_USER : String = "pics/";
+		public static const UPLOAD_DIR_FE_USER_REGISTER : String = "tx_srfeuserregister/";
 
 		public static const UPLOAD_DIR_TT_NEWS : String = "pics/";
 

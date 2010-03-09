@@ -1,98 +1,76 @@
 package de.wwsc.t3flex.vo.t3Standards
 {
 	import de.wwsc.t3flex.vo.DbHelper;
-	
+
 	import mx.collections.ArrayCollection;
-	
+
 	public class T3Fe_User extends T3DbElement
 	{
-		
+
 		[Bindable]
-		private var _name : String;
-		
+		public var name : String;
+
 		[Bindable]
 		public var username : String;
-		
+
 		[Bindable]
 		public var password : String;
-		
+
 		[Bindable]
 		public var email : String;
-		
+
 		[Bindable]
 		public var telephone : String;
-		
+
 		[Bindable]
 		public var fax : String;
-		
-		[Bindable]
-		public var first_name : String;
-		
-		[Bindable]
-		public var last_name : String;
-		
+
+
 		[Bindable]
 		public var title : String;
-		
+
 		[Bindable]
 		public var image : String;
-		
+
 		[Bindable]
 		public var www : String;
-		
+
 		[Bindable]
 		public var company : String;
-		
+
 		[Bindable]
 		public var country : String;
-		
+
 		[Bindable]
 		public var address : String;
-		
+
 		[Bindable]
 		public var zip : String;
-		
+
 		[Bindable]
 		public var city : String;
-		
+
 		[Bindable]
 		public var status : String;
-		
+
 		[Bindable]
 		public var date_of_birth : String;
-		
+
 		[Bindable]
 		public var date_of_birthDate : Date;
-		
+
 		[Bindable]
 		public var gender : String;
-		
+
 		[Bindable]
 		public var usergroup : String = new String;
-		
+
 		private var myFilterUid : uint;
-		
+
 		private var myObject : Object;
-		
-		public function get name() : String
-		{
-			if ( !_name )
-			{
-				_name = first_name + " " + last_name;
-			}
-			
-			return _name;
-		
-		}
-		
-		public function set name( myString : String ) : void
-		{
-			if ( myString )
-			{
-				_name = myString;
-			}
-		}
-		
+
+
+
 		public function get usergroupArray() : Array
 		{
 			if ( usergroup.length > 0 )
@@ -104,17 +82,17 @@ package de.wwsc.t3flex.vo.t3Standards
 				return null
 			}
 		}
-		
+
 		public function set usergroupArray( myArray : Array ) : void
 		{
 			// XXX hier soll nichts gemacht werden
 		}
-		
+
 		public function getUsersFromUidArray( object : Object,myData : ArrayCollection,type : String,handlerFunction : Function=null ) : void
 		{
 			myObject = object;
 			myResultFunction = handlerFunction;
-			
+
 			//initApp();
 			//trace("*** getUsersFromUidArray: "+myData.length);
 			for ( var i : uint = 0;i < myData.length;i++ )
@@ -122,7 +100,7 @@ package de.wwsc.t3flex.vo.t3Standards
 				//getUserFromUid(myData[i]);
 			}
 		}
-		
+
 		/*
 		   public function getUserFromUsername(userName:String,resultFunction:Function):void
 		   {
@@ -130,7 +108,7 @@ package de.wwsc.t3flex.vo.t3Standards
 		   myDbHelper.getChildrenFromFilterValue(this,resultFunction,"username",userName);
 		   }
 		 */
-		
+
 		public function memberOfGroup( groupId : uint ) : Boolean
 		{
 			var found : Boolean = false;
@@ -144,25 +122,24 @@ package de.wwsc.t3flex.vo.t3Standards
 					}
 				}
 			}
-			
+
 			return found;
 		}
-		
+
 		private function addUserToArray( data : ArrayCollection ) : void
 		{
 			/// xxx myProject.projectLeader.data.addItem(data[0]);
 			myResultFunction();
 		}
-		
+
 		public function T3Fe_User()
 		{
 			super();
 			t3Table = "fe_users";
 			fields.fields[ "username" ] = String;
+			fields.fields[ "name" ] = String;
 			fields.fields[ "password" ] = String;
 			fields.fields[ "usergroup" ] = String;
-			fields.fields[ "first_name" ] = String;
-			fields.fields[ "last_name" ] = String;
 			fields.fields[ "email" ] = String;
 			fields.fields[ "telephone" ] = String;
 			fields.fields[ "fax" ] = String;
@@ -178,6 +155,7 @@ package de.wwsc.t3flex.vo.t3Standards
 			fields.fields[ "date_of_birth" ] = String;
 			fields.fields[ "gender" ] = String;
 		}
-	
+
 	}
 }
+
