@@ -1,13 +1,22 @@
+//------------------------------------------------------------------------------
+//
+//   Copyright 2010 - wwsc Maerkte und Medien GmbH 
+//   Reimar Kosack, http://wwsc.de 
+//   For further informations see blog.t3flex.com 
+//
+//------------------------------------------------------------------------------
 package de.wwsc.t3flex
 {
 	import de.wwsc.shared.WwscHelper;
 	import de.wwsc.t3flex.model.T3FlexModel;
 	import de.wwsc.t3flex.vo.T3FlexConfiguration;
 
-	import flash.display.MovieClip;
 	import flash.events.ContextMenuEvent;
 	import flash.events.EventDispatcher;
+	import flash.ui.ContextMenu;
 	import flash.ui.ContextMenuItem;
+
+	import mx.core.FlexGlobals;
 
 	/**
 	 * T3Flex is the main class providing all settings and setups for your applications.
@@ -48,7 +57,6 @@ package de.wwsc.t3flex
 		 * Instance of the Typo3-Model
 		 */
 		public var model : T3FlexModel = new T3FlexModel();
-
 		/**
 		 * Delivers the directory of the SWF-File
 		 * Might be moved to configuration or helper in the future
@@ -75,34 +83,20 @@ package de.wwsc.t3flex
 			return _instance;
 		}
 
-		/**
-		 * Typical format of a simple multiline comment.
-		 * This text describes the myMethod() method, which is declared below.
-		 *
-		 * @param param1 Describe param1 here.
-		 * @param param2 Describe param2 here.
-		 *
-		 * @return Describe return value here.
-		 *
-		 * @see someOtherMethod
-		 */
 		private function setContextMenu() : void
 		{
-			//Application.application.contextMenu.hideBuiltInItems();
+			var menu:ContextMenu = new ContextMenu();
 			var myEntry : ContextMenuItem = new ContextMenuItem( "T3Flex - the Typo3/AS3 Bridge © 2010 wwsc.de",true )
+			menu.customItems.push(myEntry);
 			myEntry.addEventListener( ContextMenuEvent.MENU_ITEM_SELECT,ctMenu );
-			var mc : MovieClip = new MovieClip();
-			if ( mc.stage )
-			{
-				mc.stage.contextMenu.customItems.push( myEntry );
-			}
-
+			FlexGlobals.topLevelApplication.contextMenu = menu;
+			FlexGlobals.topLevelApplication.contextMenu.hideBuiltInItems();
 		}
 
 		private function ctMenu( event : ContextMenuEvent ) : void
 		{
 			var wwsc : WwscHelper = new WwscHelper();
-			wwsc.goToUrl( "http://blog.t3flex.com" );
+			wwsc.goToUrl( "http://blog.t3flex.com/about/" );
 		}
 
 		/**

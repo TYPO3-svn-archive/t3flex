@@ -10,15 +10,16 @@ package de.wwsc.t3flex.vo.t3Standards
 	import de.wwsc.t3flex.vo.T3Helper;
 
 	import flash.events.EventDispatcher;
-	import flash.utils.ByteArray;
+	import flash.net.FileReference;
+	import flash.net.URLRequest;
+	import flash.net.URLRequestMethod;
+	import flash.net.URLVariables;
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
-	import flash.xml.XMLDocument;
 
 	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
 	import mx.events.CloseEvent;
-	import mx.rpc.xml.SimpleXMLDecoder;
 
 	public class T3DbElement extends EventDispatcher
 	{
@@ -370,6 +371,44 @@ package de.wwsc.t3flex.vo.t3Standards
 
 			}
 		}
+
+		/**
+		 * Function to upload a file to a TYPO3-Filefield
+		 * uid has to be filled
+		 * @param file Reference to a existing file. You can listen to all valid events of your file to know the status of your upload
+		 * @param fieldName Name(String) of the datafield to be filled
+		 * @param action
+		 *
+		 */		
+		public function uploadFile(file:FileReference,fieldName:String,action:String ="UPDATE"):void
+		{
+			if (this.uid && this.t3Table)
+			{
+
+				var variables : URLVariables = new URLVariables();
+				variables[T3Flex.getInstance().config.extensionName+"[table]"] = this.t3Table;
+				variables[T3Flex.getInstance().config.extensionName+"[uid]"] = this.uid;
+				variables[ T3Flex.getInstance().config.extensionName + '[action]' ] = action;
+				variables['id'] = T3Flex.getInstance().config.baseSitePid;
+
+				var urlReq:URLRequest = new URLRequest();
+				var endpoint:String = T3Flex.getInstance().config.baseUrl + "index.php?id=4"
+				urlReq.data = variables;
+				urlReq.contentType = "multipart/form-data";
+				urlReq.method = URLRequestMethod.POST;
+				urlReq.url = endpoint;
+				var fieldNameStr:String = T3Flex.getInstance().config.extensionName+"[FS]["+fieldName+"]"
+
+				file.upload( urlReq,fieldNameStr,false );
+			}
+			else
+			{
+				throw new Error("uploadFile only works with a existing databaseentry");
+			}
+
+		}
+
+
 
 
 		public function T3DbElement()
