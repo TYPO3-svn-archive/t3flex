@@ -392,7 +392,7 @@ package de.wwsc.t3flex.vo.t3Standards
 				variables['id'] = T3Flex.getInstance().config.baseSitePid;
 
 				var urlReq:URLRequest = new URLRequest();
-				var endpoint:String = T3Flex.getInstance().config.baseUrl + "index.php?id=4"
+				var endpoint:String = T3Flex.getInstance().config.baseUrl + "index.php?id="+T3Flex.getInstance().config.baseSitePid;
 				urlReq.data = variables;
 				urlReq.contentType = "multipart/form-data";
 				urlReq.method = URLRequestMethod.POST;
