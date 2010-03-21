@@ -23,6 +23,7 @@
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Page"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Static_country"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Tt_content"/>
+    <classEntry path="com.marstonstudios.UploadPostHelper"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
