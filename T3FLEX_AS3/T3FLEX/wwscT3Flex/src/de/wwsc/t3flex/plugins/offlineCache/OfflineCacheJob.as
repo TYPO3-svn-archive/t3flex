@@ -40,7 +40,7 @@ package de.wwsc.t3flex.plugins.offlineCache
 				var url: String = "t3FlexCache/"+_controller.translateID(_offlineCacheDataQueryObj.t3FlexQueryStr);
 				trace( this,"FileLoaded",url,_offlineCacheDataQueryObj.t3FlexQueryStr );
 				_offlineCacheDataQueryObj.target.source = url;
-				if (_offlineCacheDataQueryObj.callback)
+				if (_offlineCacheDataQueryObj.callback())
 					_offlineCacheDataQueryObj.callback();
 			}
 		}
