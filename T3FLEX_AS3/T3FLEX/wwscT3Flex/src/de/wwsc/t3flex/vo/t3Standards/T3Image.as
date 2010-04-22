@@ -85,60 +85,82 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		}
 
-		public function setImage( imgName : String,imgWidth : Number=-1,imgHeight : Number=-1,proportion : String="m",uploadDir : String="tx_templavoila/",enableBitmapSmoothing : Boolean=false ) : void
+
+		/**
+		 *
+		 * @param imgName
+		 * @param imgWidth
+		 * @param imgHeight
+		 * @param proportion
+		 * @param uploadDir
+		 * @param enableBitmapSmoothing
+		 * @param usePlainImage The is displayed as saved on the webserver
+		 *
+		 */		
+		public function setImage( imgName : String,imgWidth : Number=-1,imgHeight : Number=-1,proportion : String="m",uploadDir : String="tx_templavoila/",enableBitmapSmoothing : Boolean=false,usePlainImage:Boolean=false ) : void
 		{
 			if ( imgName != "" )
 			{
 				_enableBitmapSmoothing = enableBitmapSmoothing;
-				if ( imgHeight == -1 )
-				{
-					imgHeight = height;
-				}
-				if ( imgWidth == -1 )
-				{
-					imgWidth = width;
-				}
 
-				_fullUrl = getUrlOfImage( imgName,imgHeight,imgWidth,proportion,uploadDir );
-
-				if ( T3Flex.getInstance().config.enableOfflineCache )
+				if (usePlainImage)
 				{
-					var obj : OfflineQueryObj = new OfflineQueryObj()
-					obj.t3FlexQueryStr = _fullUrl;
-					obj.target = this;
-					obj.type = OfflineQueryObj.IMAGE_CALL;
-					obj.callback = fireEvent;
-					T3Flex.getInstance().dispatchEvent( new T3FlexEvent( T3FlexEvent.IMAGE_OFFLINECACHE_LOOK_UP,obj ));
+					_fullUrl =T3Flex.getInstance().config.baseUrl +"uploads/"+ uploadDir + getFirstImage( imgName );	
+					this.addEventListener(Event.COMPLETE,fireEvent);
+					this.source =_fullUrl;
 				}
 				else
 				{
+					if ( imgHeight == -1 )
 					{
-						if ( T3Flex.getInstance().model.bulkLoader.hasItem( _fullUrl ))
+						imgHeight = height;
+					}
+					if ( imgWidth == -1 )
+					{
+						imgWidth = width;
+					}
+
+					_fullUrl = getUrlOfImage( imgName,imgHeight,imgWidth,proportion,uploadDir );
+
+					if ( T3Flex.getInstance().config.enableOfflineCache )
+					{
+						var obj : OfflineQueryObj = new OfflineQueryObj()
+						obj.t3FlexQueryStr = _fullUrl;
+						obj.target = this;
+						obj.type = OfflineQueryObj.IMAGE_CALL;
+						obj.callback = fireEvent;
+						T3Flex.getInstance().dispatchEvent( new T3FlexEvent( T3FlexEvent.IMAGE_OFFLINECACHE_LOOK_UP,obj ));
+					}
+					else
+					{
 						{
-							var bitmap : Bitmap = T3Flex.getInstance().model.bulkLoader.getBitmap( _fullUrl,false )
-							if ( bitmap )
+							if ( T3Flex.getInstance().model.bulkLoader.hasItem( _fullUrl ))
 							{
-								if ( bitmap.bitmapData )
+								var bitmap : Bitmap = T3Flex.getInstance().model.bulkLoader.getBitmap( _fullUrl,false )
+								if ( bitmap )
 								{
-									this.source = bitmap
-									var wwsc : WwscHelper = new WwscHelper;
-									wwsc.delay( 100,fireEvent )
-								}
-								else
-								{
-									T3Flex.getInstance().model.bulkLoader.remove( _fullUrl );
-									T3Flex.getInstance().model.bulkLoader.add( _fullUrl,{ type:"image",
-											priority:250 });
-									T3Flex.getInstance().model.bulkLoader.get( _fullUrl ).addEventListener( Event.COMPLETE,loadingCompleteHandler );
+									if ( bitmap.bitmapData )
+									{
+										this.source = bitmap
+										var wwsc : WwscHelper = new WwscHelper;
+										wwsc.delay( 100,fireEvent )
+									}
+									else
+									{
+										T3Flex.getInstance().model.bulkLoader.remove( _fullUrl );
+										T3Flex.getInstance().model.bulkLoader.add( _fullUrl,{ type:"image",
+												priority:250 });
+										T3Flex.getInstance().model.bulkLoader.get( _fullUrl ).addEventListener( Event.COMPLETE,loadingCompleteHandler );
+									}
 								}
 							}
-						}
-						else
-						{
-							T3Flex.getInstance().model.bulkLoader.add( _fullUrl,{ type:"image",
-									priority:250 });
-							T3Flex.getInstance().model.bulkLoader.get( _fullUrl ).addEventListener( Event.COMPLETE,loadingCompleteHandler );
+							else
+							{
+								T3Flex.getInstance().model.bulkLoader.add( _fullUrl,{ type:"image",
+										priority:250 });
+								T3Flex.getInstance().model.bulkLoader.get( _fullUrl ).addEventListener( Event.COMPLETE,loadingCompleteHandler );
 
+							}
 						}
 					}
 				}
@@ -168,8 +190,9 @@ package de.wwsc.t3flex.vo.t3Standards
 			// fire, when Image was loaded
 		}
 
-		public function fireEvent() : void
+		public function fireEvent(e:Event=null) : void
 		{
+			this.removeEventListener(Event.COMPLETE,fireEvent)
 			this.dispatchEvent( new T3FlexEvent( T3FlexEvent.IMAGE_LOADED,this,true ));
 
 		}
