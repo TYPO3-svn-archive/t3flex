@@ -301,7 +301,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 				if ( insertPid == -1 )
 				{
-					throw new Error("No INSERTPid was set / T3Flex / Data was create at pid 0")
+					throw new Error("No INSERTPid was set / T3Flex / Data was created at pid 0")
 				}
 				else
 				{

@@ -51,6 +51,17 @@ package de.wwsc.t3flex.vo
 
 			initApp( "INSERT",myTarget );
 		}
+		public function addAMMRelation( targetClass : Class,object : T3DbElement,resultFunction : Function,objectColumn:String ) : void
+		{
+			//trace ("getMMForUid: "+targetClass.toString());
+			myResultFunction = resultFunction;
+			var myClass : Class = targetClass as Class;
+
+			var myTarget : Object = new myClass();
+			myTarget.uid = object.uid;
+
+			initApp( "INSERTMM",myTarget );
+		}
 
 		public function getAllChildrenOfTable( object : Object,resultFunction : Function,languageId : int=-1 ) : void
 		{
@@ -124,7 +135,6 @@ package de.wwsc.t3flex.vo
 			gateway.addEventListener( ResultEvent.RESULT,resultHandler );
 			gateway.addEventListener( FaultEvent.FAULT,faultHandler );
 
-			// XXX hier kann man optimieren und ein Event auswerfen (loading)
 
 			myObject = myItem;
 			dbQuery.action = action;
