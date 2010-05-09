@@ -91,6 +91,11 @@ package de.wwsc.t3flex.vo.t3Standards
 				'imagecols':Number,
 				'_LOCALIZED_UID':Number }
 
+		public function get crdateAsDateVO():Date
+		{
+			return T3Helper.getInstance().convertTimeStampToDate(crdate)
+		}
+
 		public function getChildren( resultFunction : Function,languageId : int=-1 ) : void
 		{
 			myResultFunction = resultFunction;
@@ -184,7 +189,7 @@ package de.wwsc.t3flex.vo.t3Standards
 			}
 			else
 			{
-				trace( "not deleted" )
+				trace( this, "removeRecordProceed","not deleted" )
 			}
 
 		}

@@ -26,6 +26,17 @@ package de.wwsc.t3flex.vo
 
 		private var keys : Object = {};
 
+		public function convertTimeStampToDate( timestamp : String ) : Date
+		{
+			var currDate : Date = new Date( Number( timestamp ) * 1000 ); //timestamp_in_seconds*1000 - if you use a result of PHP time function, which returns it in seconds, and Flash uses milliseconds
+			var D : Number = currDate.getDate();
+			var M : Number = currDate.getMonth() + 1; //because Returns the month (0 for January, 1 for February, and so on)
+			var Y : Number = currDate.getFullYear();
+			var theDate : String = ( M + "/" + D + "/" + Y );
+			//trace(theDate);
+			return currDate; // theDate;			
+		}
+
 		public function getClassFromDsId( ds : uint ) : Class
 		{
 			for each ( var item : Object in T3Flex.getInstance().config.tx_templavoila_dsArr )
@@ -182,6 +193,8 @@ package de.wwsc.t3flex.vo
 				return true;
 			}
 		}
+
+
 
 		public function getArrayFromFilter( filterField : String,filterValue : Object,sourceArr : Array ) : Array
 		{
@@ -423,6 +436,22 @@ package de.wwsc.t3flex.vo
 			}
 			if ( T3Flex.getInstance().config.debug )
 				trace( "Language: " + ResourceManager.getInstance().getString( "resources","TEST" ));
+		}
+
+		public function addOneUidToMMRelations(targetField:String,newUid:uint):String
+		{
+			if (targetField=="0")
+			{
+				targetField=newUid.toString();
+			}
+			else
+			{
+				targetField+=","+newUid.toString();
+			}
+
+			return targetField;
+
+
 		}
 	}
 }
