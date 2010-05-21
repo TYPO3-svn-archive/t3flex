@@ -23,14 +23,18 @@
 			{
 				super.data = data;
 				//trace(data.media)
-				if (data.image)
+				if (data)
 				{
-					t3image.setImage(data.image,-1,-1,"c",T3Image.UPLOAD_DIR_TT_NEWS);
-					t3image.toolTip = data.imagecaption;
-				}
-				else
-				{
-					this.removeElement(t3image);
+
+					if (data.image)
+					{
+						t3image.setImage(data.image,-1,-1,"c",T3Image.UPLOAD_DIR_TT_NEWS);
+						t3image.toolTip = data.imagecaption;
+					}
+					else
+					{
+						this.removeElement(t3image);
+					}
 				}
 			}
 		]]>
