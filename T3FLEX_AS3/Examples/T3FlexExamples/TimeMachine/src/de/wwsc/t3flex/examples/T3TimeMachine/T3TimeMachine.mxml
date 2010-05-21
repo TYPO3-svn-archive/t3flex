@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   creationComplete="application1_creationCompleteHandler(event)"
 			   xmlns:mx="library://ns.adobe.com/flex/halo" minWidth="1024" minHeight="768" xmlns:layout="de.wwsc.t3flex.examples.T3TimeMachine.layout.*">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<fx:Script>
 		<![CDATA[
-			import de.wwsc.t3flex.examples.T3TimeMachine.model.MainApplicationModel;
 			import de.wwsc.t3flex.examples.T3TimeMachine.controller.MainApplicationController;
+			import de.wwsc.t3flex.examples.T3TimeMachine.model.MainApplicationModel;
+
+			import mx.events.FlexEvent;
 
 			[Bindable]
-			public var model:MainApplicationModel = new MainApplicationModel(this);
+			public var model:MainApplicationModel;
 
-			public var controller:MainApplicationController = new MainApplicationController(this,model);
+			public var controller:MainApplicationController;
+
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				model = new MainApplicationModel(this);
+				controller = new MainApplicationController(this,model);
+			}
+
 		]]>
 	</fx:Script>
 	<s:List id="timeMachine" caretChange="controller.timeMachine_caretChangeHandler(event)"
