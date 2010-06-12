@@ -1,8 +1,9 @@
 package de.wwsc.t3flex.vo
 {
-	import de.wwsc.shared.WwscHelper;
 	import de.wwsc.t3flex.T3Flex;
 	import de.wwsc.t3flex.vo.t3Standards.T3Fe_User;
+
+	import mx.controls.Alert;
 
 	/**
 	 * For setup of Typo3 pls have a look at the example in the T3Flex-Class
@@ -193,10 +194,10 @@ package de.wwsc.t3flex.vo
 			//t3BaseUrlFromSwfStorage
 			if ( T3Flex.getInstance().config.enableDetectionOfBaseUrl )
 			{
-				var wwsc : WwscHelper = new WwscHelper();
-				_baseUrl = wwsc.baseUrlOfDomain;
+				_baseUrl =T3Helper.getInstance().baseUrlOfDomain;
 
 				// if you are working locally / we'll use the debugBaseUrl
+				//Alert.show(_baseUrl);
 				if ( _baseUrl == "localhost" )
 				{
 					_baseUrl = debugBaseUrl;
@@ -224,9 +225,8 @@ package de.wwsc.t3flex.vo
 
 		public function get t3BaseUrlFromSwfStorage() : String
 		{
-			var wwsc : WwscHelper = new WwscHelper();
-			var pos : int = wwsc.swfBaseDir.lastIndexOf( "/uploads/" );
-			var myString : String = wwsc.swfBaseDir.substring( 0,pos + 1 )
+			var pos : int = T3Helper.getInstance().swfBaseDir.lastIndexOf( "/uploads/" );
+			var myString : String = T3Helper.getInstance().swfBaseDir.substring( 0,pos + 1 )
 			return myString;
 		}
 

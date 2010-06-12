@@ -5,7 +5,10 @@ package de.wwsc.t3flex.vo
 	import de.wwsc.t3flex.T3Flex;
 	import de.wwsc.t3flex.vo.t3Standards.T3Tt_content;
 
+	import flash.net.LocalConnection;
+
 	import mx.collections.ArrayCollection;
+	import mx.core.FlexGlobals;
 	import mx.resources.ResourceManager;
 
 	public class T3Helper
@@ -452,6 +455,27 @@ package de.wwsc.t3flex.vo
 			return targetField;
 
 
+		}
+
+
+		public function get baseUrlOfDomain() : String
+		{
+			var localDomainLC : LocalConnection = new LocalConnection();
+			//ToDo:::
+			// This does not work with ports that differ from 80 
+			var myDomainName : String = localDomainLC.domain
+
+
+			return myDomainName;
+		}
+
+		public function get swfBaseDir() : String
+		{
+			var myString : String = FlexGlobals.topLevelApplication.url;
+			var myPos : int = myString.lastIndexOf( "/" );
+			myString = myString.substr( 0,myPos + 1 );
+
+			return myString
 		}
 	}
 }
