@@ -7,9 +7,9 @@
 //------------------------------------------------------------------------------
 package de.wwsc.t3flex
 {
-	import de.wwsc.shared.WwscHelper;
 	import de.wwsc.t3flex.model.T3FlexModel;
 	import de.wwsc.t3flex.vo.T3FlexConfiguration;
+	import de.wwsc.t3flex.vo.T3Helper;
 
 	import flash.events.ContextMenuEvent;
 	import flash.events.EventDispatcher;
@@ -57,16 +57,7 @@ package de.wwsc.t3flex
 		 * Instance of the Typo3-Model
 		 */
 		public var model : T3FlexModel = new T3FlexModel();
-		/**
-		 * Delivers the directory of the SWF-File
-		 * Might be moved to configuration or helper in the future
-		 */
-		public function get swfBaseDir() : String
-		{
-			var wwsc : WwscHelper = new WwscHelper();
-			return wwsc.swfBaseDir
 
-		}
 
 		/**
 		 * Singleton-Function
@@ -95,8 +86,7 @@ package de.wwsc.t3flex
 
 		private function ctMenu( event : ContextMenuEvent ) : void
 		{
-			var wwsc : WwscHelper = new WwscHelper();
-			wwsc.goToUrl( "http://blog.t3flex.com/about/" );
+			T3Helper.getInstance().goToUrl( "http://blog.t3flex.com/about/" );
 		}
 
 		/**

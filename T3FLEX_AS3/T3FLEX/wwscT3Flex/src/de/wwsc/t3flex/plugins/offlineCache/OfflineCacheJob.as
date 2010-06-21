@@ -1,6 +1,7 @@
 package de.wwsc.t3flex.plugins.offlineCache
 {
 	import de.wwsc.t3flex.T3Flex;
+	import de.wwsc.t3flex.vo.T3Helper;
 
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -57,7 +58,7 @@ package de.wwsc.t3flex.plugins.offlineCache
 		private function getFileFromDisc( t3FlexQueryString : String ) : void
 		{
 			var urlLoader : URLLoader = new URLLoader();
-			var baseUrl : String = T3Flex.getInstance().swfBaseDir;
+			var baseUrl : String = T3Helper.getInstance().swfBaseDir;
 			urlLoader.addEventListener( Event.COMPLETE,fileCompleteHandler );
 			urlLoader.addEventListener( IOErrorEvent.IO_ERROR,getFileFromDiscErrorHander );
 			urlLoader.addEventListener( SecurityErrorEvent.SECURITY_ERROR,getFileFromDiscErrorHander );

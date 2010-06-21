@@ -3,7 +3,6 @@ package de.wwsc.t3flex.vo.t3Standards
 	import com.marstonstudios.UploadPostHelper;
 
 	import de.wwsc.shared.MonitorBusy;
-	import de.wwsc.shared.WwscHelper;
 	import de.wwsc.t3flex.T3Flex;
 	import de.wwsc.t3flex.events.T3FlexEvent;
 	import de.wwsc.t3flex.vo.DbHelper;
@@ -228,7 +227,6 @@ package de.wwsc.t3flex.vo.t3Standards
 
 			if ( action == DbQuery.SELECT_MM )
 			{
-				var wwsc : WwscHelper = new WwscHelper();
 
 				if ( query.selectForeignTable )
 				{

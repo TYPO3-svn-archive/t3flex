@@ -1,7 +1,6 @@
 package de.wwsc.t3flex.vo.t3Standards
 {
 
-	import de.wwsc.shared.WwscHelper;
 	import de.wwsc.t3flex.T3Flex;
 	import de.wwsc.t3flex.events.T3FlexEvent;
 	import de.wwsc.t3flex.plugins.offlineCache.OfflineQueryObj;
@@ -141,9 +140,11 @@ package de.wwsc.t3flex.vo.t3Standards
 								{
 									if ( bitmap.bitmapData )
 									{
-										this.source = bitmap
-										var wwsc : WwscHelper = new WwscHelper;
-										wwsc.delay( 100,fireEvent )
+										this.source = bitmap;
+										//ToDo:
+										//var wwsc : WwscHelper = new WwscHelper;
+										//wwsc.delay( 100,fireEvent )
+										fireEvent()										
 									}
 									else
 									{

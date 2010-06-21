@@ -6,6 +6,8 @@ package de.wwsc.t3flex.vo
 	import de.wwsc.t3flex.vo.t3Standards.T3Tt_content;
 
 	import flash.net.LocalConnection;
+	import flash.net.URLRequest;
+	import flash.net.navigateToURL;
 
 	import mx.collections.ArrayCollection;
 	import mx.core.FlexGlobals;
@@ -469,6 +471,18 @@ package de.wwsc.t3flex.vo
 			return myDomainName;
 		}
 
+
+		public function goToUrl( url : String,target : String="_blank" ) : void
+		{
+			var u : URLRequest = new URLRequest( url );
+			navigateToURL( u,target );
+		}
+
+
+		/**
+		 * Delivers the directory of the SWF-File
+		 * Might be moved to configuration or helper in the future
+		 */
 		public function get swfBaseDir() : String
 		{
 			var myString : String = FlexGlobals.topLevelApplication.url;
@@ -476,6 +490,7 @@ package de.wwsc.t3flex.vo
 			myString = myString.substr( 0,myPos + 1 );
 
 			return myString
+
 		}
 	}
 }

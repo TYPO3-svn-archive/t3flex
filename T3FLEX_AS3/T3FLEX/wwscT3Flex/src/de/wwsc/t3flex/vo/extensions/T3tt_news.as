@@ -1,8 +1,8 @@
 package de.wwsc.t3flex.vo.extensions {
-	import de.wwsc.shared.WwscHelper;
 	import de.wwsc.t3flex.T3Flex;
 	import de.wwsc.t3flex.vo.DbHelper;
 	import de.wwsc.t3flex.vo.DbQuery;
+	import de.wwsc.t3flex.vo.T3Helper;
 	import de.wwsc.t3flex.vo.t3Standards.T3DbElement;
 
 	public class T3tt_news extends T3DbElement {
@@ -40,9 +40,8 @@ package de.wwsc.t3flex.vo.extensions {
 		}
 
 		public function get dateTimeDate() : Date {
-			var wwsc : WwscHelper = new WwscHelper();
 
-			return wwsc.convertTimeStampToDate( datetime.toString());
+			return T3Helper.getInstance().convertTimeStampToDate( datetime.toString());
 		}
 
 		public function getShortText() : String {
