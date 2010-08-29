@@ -136,6 +136,23 @@ package de.wwsc.t3flex.vo
 			return str;
 		}
 
+		public function replaceGermanUmlauts(str:String):String
+		{
+			trace(this,str);
+			if (str)
+			{
+				var pattern : RegExp;
+				//trace( "befor:" + str );
+				pattern = //g;
+				str = str.replace( pattern,"ü" );
+				pattern = //g;
+				str = str.replace( pattern,"ä" );
+
+			}
+
+			return str
+		}
+
 		public function typo3RichtextHtmlToFlexTextfieldHtml( str : String ) : String
 		{
 			if ( str )

@@ -80,8 +80,11 @@ package de.wwsc.t3flex
 			var myEntry : ContextMenuItem = new ContextMenuItem( "T3Flex - the Typo3/AS3 Bridge © 2010 wwsc.de",true )
 			menu.customItems.push(myEntry);
 			myEntry.addEventListener( ContextMenuEvent.MENU_ITEM_SELECT,ctMenu );
-			FlexGlobals.topLevelApplication.contextMenu = menu;
-			FlexGlobals.topLevelApplication.contextMenu.hideBuiltInItems();
+			if (FlexGlobals.topLevelApplication)
+			{
+				FlexGlobals.topLevelApplication.contextMenu = menu;
+				FlexGlobals.topLevelApplication.contextMenu.hideBuiltInItems();
+			}
 		}
 
 		private function ctMenu( event : ContextMenuEvent ) : void
