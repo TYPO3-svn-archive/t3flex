@@ -353,7 +353,14 @@ package de.wwsc.t3flex.vo
 			if ( Boolean( myResultFunction ))
 			{
 				//trace("4: "+String(getTimer()-startTime))
-				myResultFunction( data );
+				try
+				{
+					myResultFunction( data );
+				}
+				catch(e:Error)
+				{
+					trace("T3FLEX Error",e.errorID,e.message);
+				}
 			}
 			//trace("4: "+String(getTimer()-startTime))
 		}

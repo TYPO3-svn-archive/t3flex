@@ -157,8 +157,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		public function filterThisElement() : Boolean
 		{
-			var t3helper : T3Helper = new T3Helper();
-			return t3helper.deliverObject( this );;
+			return T3Helper.getInstance().deliverObject( this );;
 		}
 
 		public function removeRecord( resultFunction : Function,withWarning : Boolean=true ) : void
