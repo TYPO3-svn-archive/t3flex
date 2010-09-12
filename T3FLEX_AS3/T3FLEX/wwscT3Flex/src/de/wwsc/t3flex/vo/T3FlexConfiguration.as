@@ -136,6 +136,11 @@ package de.wwsc.t3flex.vo
 		 */
 		public var enableOfflineCache : Boolean = false;
 
+		/**
+		 * Enables the use of the object in every uid Loader, a objects gets loaded the first time
+		 */
+		public var enableObjectPool:Boolean = false;
+
 		public var offlineCacheStartFunction : Function;
 
 		/**
@@ -229,6 +234,8 @@ package de.wwsc.t3flex.vo
 			var myString : String = T3Helper.getInstance().swfBaseDir.substring( 0,pos + 1 )
 			return myString;
 		}
+
+
 
 		public function T3FlexConfiguration()
 		{

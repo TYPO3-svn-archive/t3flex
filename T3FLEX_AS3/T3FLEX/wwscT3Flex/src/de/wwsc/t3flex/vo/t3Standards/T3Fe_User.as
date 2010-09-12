@@ -71,22 +71,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 
 
-		public function get usergroupArray() : Array
-		{
-			if ( usergroup.length > 0 )
-			{
-				return usergroup.split( "," );
-			}
-			else
-			{
-				return null
-			}
-		}
 
-		public function set usergroupArray( myArray : Array ) : void
-		{
-			// XXX hier soll nichts gemacht werden
-		}
 
 		public function getUsersFromUidArray( object : Object,myData : ArrayCollection,type : String,handlerFunction : Function=null ) : void
 		{
@@ -112,11 +97,12 @@ package de.wwsc.t3flex.vo.t3Standards
 		public function memberOfGroup( groupId : uint ) : Boolean
 		{
 			var found : Boolean = false;
-			if ( usergroupArray )
+			var arr:Array = usergroup.split(",");
+			if ( arr.length>0 )
 			{
-				for ( var i : uint = 0;i < usergroupArray.length;i++ )
+				for ( var i : uint = 0;i < arr.length;i++ )
 				{
-					if ( usergroupArray[ i ] == groupId )
+					if ( arr[ i ] == groupId )
 					{
 						found = true
 					}

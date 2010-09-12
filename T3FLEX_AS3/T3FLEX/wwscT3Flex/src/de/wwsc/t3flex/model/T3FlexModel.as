@@ -3,6 +3,7 @@ package de.wwsc.t3flex.model {
 
 	import de.wwsc.t3flex.events.T3FlexEvent;
 	import de.wwsc.t3flex.vo.T3FlexPagetree;
+	import de.wwsc.t3flex.vo.T3ObjectPool;
 
 	import flash.events.EventDispatcher;
 
@@ -14,13 +15,18 @@ package de.wwsc.t3flex.model {
 		public const T3FLEXLOADER : String = "T3FLEXLOADER";
 
 		[Bindable]
+		public var objectPool:T3ObjectPool = new T3ObjectPool();
+
+		[Bindable]
 		private var _pagesArr : Array = [];
 
 		[Bindable]
 		private var _ttContentArr : Array = [];
 
+		[Bindable]
 		public var pagetree : T3FlexPagetree = new T3FlexPagetree;
 
+		[Bindable]
 		public var t3TvIndexValues : Array = [];
 
 		/**
@@ -64,6 +70,7 @@ package de.wwsc.t3flex.model {
 			_ttContentArr = value;
 			this.dispatchEvent( new T3FlexEvent( T3FlexEvent.MODEL_TTCONTENTARR_CHANGED,_ttContentArr ));
 		}
+
 
 	}
 }

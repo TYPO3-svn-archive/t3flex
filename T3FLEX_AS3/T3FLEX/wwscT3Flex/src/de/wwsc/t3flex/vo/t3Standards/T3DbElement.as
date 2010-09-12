@@ -9,6 +9,7 @@ package de.wwsc.t3flex.vo.t3Standards
 	import de.wwsc.t3flex.vo.DbQuery;
 	import de.wwsc.t3flex.vo.FieldArray;
 	import de.wwsc.t3flex.vo.T3Helper;
+	import de.wwsc.t3flex.vo.T3ObjectPool;
 
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -27,7 +28,7 @@ package de.wwsc.t3flex.vo.t3Standards
 	import mx.controls.Alert;
 	import mx.events.CloseEvent;
 
-	public class T3DbElement extends EventDispatcher
+	public class T3DbElement extends EventDispatcher implements IT3DbElement
 	{
 		private var _className : String = new String;
 
@@ -113,8 +114,16 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		public function getChildFromUid( uid : uint,resultFunction : Function,deliverLanguageId : uint=0 ) : void
 		{
-			var myDbHelper : DbHelper = new DbHelper;
-			myDbHelper.getChildFromUid( this,uid,resultFunction,deliverLanguageId );
+			if (T3Flex.getInstance().config.enableObjectPool)
+			{
+				var objectPool:T3ObjectPool = T3Flex.getInstance().model.objectPool;
+				objectPool.getT3ElementFromUidWithCallBack(uid,this,resultFunction,false,deliverLanguageId);
+			}
+			else
+			{
+				var myDbHelper : DbHelper = new DbHelper;
+				myDbHelper.getChildFromUid( this,uid,resultFunction,deliverLanguageId );
+			}
 		}
 
 		public function addARelation( targetClass : Class,resultFunction : Function ) : void
@@ -346,6 +355,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		private function addALocalizedObjectCopiedObjectChangedHandler( data : ArrayCollection ) : void
 		{
+
 			var element : T3DbElement = data[ 0 ];
 			this.dispatchEvent( new T3FlexEvent( T3FlexEvent.LANGUAGEOVERLAY_CREATED,element ));
 
