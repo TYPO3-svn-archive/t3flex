@@ -5,6 +5,7 @@ package de.wwsc.t3flex.vo.t3Standards
 		public var subgroup:String;
 		public var description:String;
 		public var title:String;
+		public var TSconfig:String;
 
 		public function T3Fe_Groups()
 		{
@@ -13,6 +14,7 @@ package de.wwsc.t3flex.vo.t3Standards
 			fields.fields["subgroup"]=String;
 			fields.fields["description"]=String;
 			fields.fields["title"]=String;
+			fields.fields["TSconfig"]=String;
 		}
 	}
 }
