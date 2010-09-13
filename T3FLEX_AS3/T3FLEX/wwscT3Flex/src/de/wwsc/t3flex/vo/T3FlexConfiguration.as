@@ -117,6 +117,13 @@ package de.wwsc.t3flex.vo
 		 */
 		public var enableDetectionOfBaseUrl : Boolean = false;
 
+
+		/**
+		 * String of the Pathsegment behind the TYPO3 Base
+		 * @default = "/uploads/"
+		 */
+		public var enableDetectionOfBaseUrlDirectStr : String = "/uploads/";
+
 		/**
 		 * T3Flex caches pictures loaded via the T3Image Class
 		 * This improves the loading performances
@@ -210,14 +217,13 @@ package de.wwsc.t3flex.vo
 				}
 				else
 				{
-					_baseUrl = t3BaseUrlFromSwfStorage;
-
+					_baseUrl = getT3BaseUrlFromSwfStorage(enableDetectionOfBaseUrlDirectStr);
 				}
 			}
 			// Throw a error if _baseurl is empty
 			if ( !_baseUrl )
 			{
-				throw new Error( "baseUrl is not set. Please set up the baseUrl in t3Configuration" );
+				throw new Error( "T3Flex - baseUrl is not set or empty. Please set up the baseUrl in t3Configuration" );
 			}
 
 			return _baseUrl;
@@ -228,14 +234,18 @@ package de.wwsc.t3flex.vo
 			_baseUrl = url;
 		}
 
-		public function get t3BaseUrlFromSwfStorage() : String
+		/**
+		 * Useful function if you deploy the app in several domains
+		 * @param dirStr String of the Pathsegment behind the TYPO3 Base
+		 * @return Delivers the fullpath to your T3-System if dirStr was set correctly
+		 *
+		 */		
+		public function getT3BaseUrlFromSwfStorage(dirStr:String) : String
 		{
-			var pos : int = T3Helper.getInstance().swfBaseDir.lastIndexOf( "/uploads/" );
+			var pos : int = T3Helper.getInstance().swfBaseDir.lastIndexOf( dirStr );
 			var myString : String = T3Helper.getInstance().swfBaseDir.substring( 0,pos + 1 )
 			return myString;
 		}
-
-
 
 		public function T3FlexConfiguration()
 		{

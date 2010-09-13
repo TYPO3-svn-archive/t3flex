@@ -355,7 +355,6 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		private function addALocalizedObjectCopiedObjectChangedHandler( data : ArrayCollection ) : void
 		{
-
 			var element : T3DbElement = data[ 0 ];
 			this.dispatchEvent( new T3FlexEvent( T3FlexEvent.LANGUAGEOVERLAY_CREATED,element ));
 
@@ -417,7 +416,7 @@ package de.wwsc.t3flex.vo.t3Standards
 				variables[ T3Flex.getInstance().config.extensionName + '[action]' ] = action;
 				variables[ 'id' ] = T3Flex.getInstance().config.baseSitePid;
 
-				var endpoint : String = T3Flex.getInstance().config.baseUrl + "index.php?id=" + T3Flex.getInstance().config.baseSitePid;
+				var endpoint : String = T3Flex.getInstance().config.baseUrl + "index.php?no_cache=1&id=" + T3Flex.getInstance().config.baseSitePid;
 				var fieldNameStr : String = T3Flex.getInstance().config.extensionName + "[FS][" + fieldName + "]"
 
 				// set up the request & headers for upload;
