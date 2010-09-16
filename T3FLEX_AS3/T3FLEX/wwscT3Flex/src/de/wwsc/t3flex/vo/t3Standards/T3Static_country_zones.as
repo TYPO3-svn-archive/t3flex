@@ -1,5 +1,7 @@
 package de.wwsc.t3flex.vo.t3Standards
 {
+	import de.wwsc.t3flex.vo.DbHelper;
+
 	public class T3Static_country_zones extends T3DbElement
 	{
 		public var zn_country_iso_2:String;
@@ -20,6 +22,15 @@ package de.wwsc.t3flex.vo.t3Standards
 			fields.fields["zn_name_local"]=String;
 			fields.fields["zn_name_en"]=String;
 		}
+
+
+		override public function getChildren(resultFunction:Function,languageId:int=-1):void
+		{
+			var myDbHelper:DbHelper = new DbHelper;
+			this.uid = 1;
+			myDbHelper.getStoredQuery(this,resultFunction);
+		}
+
 	}
 }
 
