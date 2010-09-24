@@ -1,5 +1,6 @@
 package de.wwsc.t3flex.vo.t3Standards
 {
+	[Bindable]
 	public class T3Fe_Groups extends T3DbElement
 	{
 		public var subgroup:String;
