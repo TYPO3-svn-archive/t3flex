@@ -44,7 +44,8 @@ package de.wwsc.t3flex.vo
 
 		public function getClassFromDsId( ds : uint ) : Class
 		{
-			for each ( var item : Object in T3Flex.getInstance().config.tx_templavoila_dsArr )
+			var arr:Array = T3Flex.getInstance().config.tx_templavoila_dsArr;
+			for each ( var item : Object in arr )
 			{
 				if ( ds == item.ds )
 					return item.objClass
@@ -358,10 +359,18 @@ package de.wwsc.t3flex.vo
 		{
 			//trace( sourceObj.tvDsName,sourceObj.header,sourceObj.uid );
 			var newClass : Class = this.getClassFromDsId( sourceObj.tx_templavoila_ds );
-			var newObj : Object = new newClass;
-			this.parse( sourceObj,newObj );
-			this.parseFlexFormIntoVars( newObj );
-			return newObj;
+			if (newClass)
+			{
+				var newObj : Object = new newClass;
+				this.parse( sourceObj,newObj );
+				this.parseFlexFormIntoVars( newObj );
+				return newObj;
+
+			}
+			else
+			{
+				throw new Error ("T3Flex: Class was not found")
+			}
 		}
 
 		private function parseFlexFormIntoVars( obj : Object ) : void
