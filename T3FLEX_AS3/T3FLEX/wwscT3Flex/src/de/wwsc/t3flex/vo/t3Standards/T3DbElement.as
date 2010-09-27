@@ -56,10 +56,6 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		public var crdate : String;
 
-		public var startTime : String;
-
-		public var endTime : String;
-
 		public var cruser_id : uint;
 
 		public var deleted : uint;

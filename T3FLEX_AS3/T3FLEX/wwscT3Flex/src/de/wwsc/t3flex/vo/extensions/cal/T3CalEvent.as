@@ -25,6 +25,13 @@ package de.wwsc.t3flex.vo.extensions.cal
 		public function T3CalEvent()
 		{
 			super();
+			t3Table = "tx_cal_event";
+			fields.fields["title"]=String;
+			fields.fields["description"]=String;
+			fields.fields["start_time"]=int;
+			fields.fields["start_date"]=int;
+			fields.fields["end_time"]=int;
+			fields.fields["end_date"]=int;
 		}
 	}
 }
