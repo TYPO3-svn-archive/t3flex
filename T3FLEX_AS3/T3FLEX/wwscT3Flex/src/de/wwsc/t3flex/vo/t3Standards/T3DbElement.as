@@ -56,6 +56,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		public var crdate : String;
 
+
 		public var cruser_id : uint;
 
 		public var deleted : uint;
@@ -281,9 +282,14 @@ package de.wwsc.t3flex.vo.t3Standards
 				query.action = DbQuery.UPDATE;
 				//this.fields.action = "UPDATE";	
 
-				myParams[ T3Flex.getInstance().config.extensionName + "[table]" ] = this.t3Table;
-				myParams[ T3Flex.getInstance().config.extensionName + "[FE][" + query.update_datafieldStr + "]" ] = this[ query.update_datafieldStr ];
+				var xmlString:String ="";
+
+				if (query.update_datafieldStr=="tx_templavoila_flex")
+					xmlString = '<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>'
+
+				myParams[ T3Flex.getInstance().config.extensionName + "[FE][" + query.update_datafieldStr + "]" ] = xmlString+this[ query.update_datafieldStr ];
 				myParams[ T3Flex.getInstance().config.extensionName + "[uid]" ] = this.uid;
+				myParams[ T3Flex.getInstance().config.extensionName + "[table]" ] = this.t3Table;
 
 			}
 
