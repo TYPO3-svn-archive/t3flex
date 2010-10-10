@@ -227,6 +227,20 @@ package de.wwsc.t3flex.vo.t3Standards
 			if ( action == DbQuery.STORED_QUERY )
 			{
 
+				if (query.storedQueryParametes)
+				{
+					for each (var obj:Object in query.storedQueryParametes)
+					{
+						for each( var key:* in obj)
+						{
+							// TODO::: Add support to more params than uid
+							myParams[ T3Flex.getInstance().config.extensionName + "[uid]" ] = key;
+
+						}
+					}
+				}
+
+
 				myParams[ T3Flex.getInstance().config.extensionName + "[qid]" ] = this.uid;
 			}
 

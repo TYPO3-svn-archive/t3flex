@@ -79,13 +79,17 @@ package de.wwsc.t3flex.vo
 			initApp( "SELECT",object )
 		}
 
-		public function getStoredQuery( object : Object,resultFunction : Function ) : void
+		public function getStoredQuery( targetObj : Object,resultFunction : Function,params:Array = null ) : void
 		{
+
+			if (params)
+				dbQuery.storedQueryParametes = params;
+
 			MonitorBusy.getInstance().setStatus( "T3-DataQuery" );
 			if ( T3Flex.getInstance().config.debug )
-				trace( "getSTORED_QUERY: " + object.className );
+				trace( "getSTORED_QUERY: " + targetObj.className );
 			myResultFunction = resultFunction;
-			initApp( "STORED_QUERY",object )
+			initApp( "STORED_QUERY",targetObj )
 		}
 
 		public function getChildrenFromFilterValue( filterField : String,filterValue : String,object : Object,resultFunction : Function,languageId : int=-1 ) : void
@@ -178,7 +182,13 @@ package de.wwsc.t3flex.vo
 					{
 						if ( T3Flex.getInstance().config.noUserCheck == false )
 						{
-							//Alert.show("You are not authenticated. Please contact your admin.","FE-Login failed");
+							//TODO::: THE FTU IS MISSING IN THE LATEST VERSION
+							var obj:* = e.metadata
+							var obj2:XMLList = obj.totalRows;
+							// No valid user was found
+							//trace(this,obj2.length());
+							if (obj2.length()==0)
+								T3Flex.getInstance().dispatchEvent(new T3FlexEvent(T3FlexEvent.DATASERVICE_AUTHORIZATION_FAILED));
 						}
 					}
 				}

@@ -23,6 +23,9 @@ package de.wwsc.t3flex.vo
 		public var foreignTable:String;
 		public var update_datafieldStr:String;
 
+
+		public var storedQueryParametes:Array;
+
 		/**
 		 * Defines the number of records that will be delivered
 		 * @default = 1000

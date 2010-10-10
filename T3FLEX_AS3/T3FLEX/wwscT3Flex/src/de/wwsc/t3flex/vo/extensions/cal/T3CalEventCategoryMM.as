@@ -5,6 +5,8 @@ package de.wwsc.t3flex.vo.extensions.cal
 
 	public class T3CalEventCategoryMM extends T3DbElement
 	{
+
+
 		public var uid_local:Number;
 		public var uid_foreign:Number;
 		public var sorting:Number;
@@ -12,7 +14,9 @@ package de.wwsc.t3flex.vo.extensions.cal
 		override public function getChildren(resultFunction:Function,languageId:int=-1):void
 		{
 			var myDbHelper:DbHelper = new DbHelper;
-			this.uid = 2;
+
+			//TODO::: Why is uid ==20 ?
+			this.uid = 20;
 			myDbHelper.getStoredQuery(this,resultFunction);
 		}
 

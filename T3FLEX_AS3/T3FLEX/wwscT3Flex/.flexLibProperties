@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="false" version="1">
   <includeClasses>
+    <classEntry path="com.marstonstudios.UploadPostHelper"/>
     <classEntry path="de.wwsc.t3flex.T3Flex"/>
     <classEntry path="de.wwsc.t3flex.model.T3FlexModel"/>
     <classEntry path="de.wwsc.t3flex.plugins.offlineCache.OfflineCacheController"/>
@@ -13,18 +14,25 @@
     <classEntry path="de.wwsc.t3flex.vo.T3FlexConfiguration"/>
     <classEntry path="de.wwsc.t3flex.vo.T3FlexPagetree"/>
     <classEntry path="de.wwsc.t3flex.vo.T3Helper"/>
+    <classEntry path="de.wwsc.t3flex.vo.T3ObjectPool"/>
+    <classEntry path="de.wwsc.t3flex.vo.T3ObjectPoolCall"/>
     <classEntry path="de.wwsc.t3flex.vo.extensions.T3tt_news"/>
     <classEntry path="de.wwsc.t3flex.vo.extensions.T3tt_news_cat"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.cal.T3CalCalendar"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.cal.T3CalCategory"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.cal.T3CalEvent"/>
+    <classEntry path="de.wwsc.t3flex.vo.extensions.cal.T3CalEventCategoryMM"/>
     <classEntry path="de.wwsc.t3flex.vo.extensions.tv.T3TvBase"/>
     <classEntry path="de.wwsc.t3flex.vo.extensions.tv.TvImages"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.IT3DbElement"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3DbElement"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Fe_Groups"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Fe_User"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Image"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Page"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Static_country"/>
-    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Tt_content"/>
-    <classEntry path="com.marstonstudios.UploadPostHelper"/>
     <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Static_country_zones"/>
+    <classEntry path="de.wwsc.t3flex.vo.t3Standards.T3Tt_content"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
