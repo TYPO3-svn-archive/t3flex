@@ -16,7 +16,7 @@ package de.wwsc.t3flex.vo.extensions.cal
 			var myDbHelper:DbHelper = new DbHelper;
 
 			//TODO::: Why is uid ==20 ?
-			this.uid = 20;
+			this.uid = 2;
 			myDbHelper.getStoredQuery(this,resultFunction);
 		}
 

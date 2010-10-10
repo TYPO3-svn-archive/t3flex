@@ -35,6 +35,7 @@ package de.wwsc.t3flex.vo.extensions.cal
 			fields.fields["description"]=String;
 			fields.fields["organizer"]=String;
 			fields.fields["start_time"]=int;
+			fields.fields["calendar_id"]=int;
 			fields.fields["start_date"]=int;
 			fields.fields["allday"]=int;
 			fields.fields["end_time"]=int;
