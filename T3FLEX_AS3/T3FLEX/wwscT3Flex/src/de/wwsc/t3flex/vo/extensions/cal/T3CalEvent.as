@@ -21,6 +21,11 @@ package de.wwsc.t3flex.vo.extensions.cal
 		public var description:String;
 		public var organizer:String;
 		public var fe_cruser_id:int;
+		public var send_invitation:int;
+		public var tx_wwscfamilycockpit_active_during_holidays:int;
+		public var tx_wwscfamilycockpit_private:int;
+		public var rdate_type:int;
+		public var intrval:int;
 
 
 
@@ -39,7 +44,12 @@ package de.wwsc.t3flex.vo.extensions.cal
 			fields.fields["start_date"]=int;
 			fields.fields["allday"]=int;
 			fields.fields["end_time"]=int;
+			fields.fields["send_invitation"]=int;
 			fields.fields["end_date"]=int;
+			fields.fields["tx_wwscfamilycockpit_active_during_holidays"]=int;
+			fields.fields["tx_wwscfamilycockpit_private"]=int;
+			fields.fields["rdate_type"]=int;
+			fields.fields["intrval"]=int;
 		}
 
 
