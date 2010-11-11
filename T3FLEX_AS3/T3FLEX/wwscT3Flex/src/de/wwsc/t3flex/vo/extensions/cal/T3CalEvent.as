@@ -50,6 +50,7 @@ package de.wwsc.t3flex.vo.extensions.cal
 			fields.fields["tx_wwscfamilycockpit_private"]=int;
 			fields.fields["rdate_type"]=int;
 			fields.fields["intrval"]=int;
+			fields.fields["location"]=String;
 		}
 
 
