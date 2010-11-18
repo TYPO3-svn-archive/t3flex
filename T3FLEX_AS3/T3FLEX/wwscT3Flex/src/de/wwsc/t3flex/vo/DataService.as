@@ -51,7 +51,7 @@ public class DataService
 				parameters[ 'logintype' ] = "login";
 				parameters[ "pid" ] = _config.loginUserStoragePid;
 				parameters[ "user" ] = _config.loginUser.username;
-				//parameters[ "pass" ] = _config.loginUser.password;
+				parameters[ "pass" ] = _config.loginUser.password;
 				
 			}
 		}

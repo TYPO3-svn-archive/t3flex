@@ -12,7 +12,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		public var username : String;
 
-		//public var password : String;
+		public var password : String;
 
 		public var email : String;
 
