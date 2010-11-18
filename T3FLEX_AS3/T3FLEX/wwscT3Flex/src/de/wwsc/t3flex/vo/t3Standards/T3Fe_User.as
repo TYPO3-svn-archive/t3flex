@@ -12,7 +12,7 @@ package de.wwsc.t3flex.vo.t3Standards
 
 		public var username : String;
 
-		public var password : String;
+		//public var password : String;
 
 		public var email : String;
 
@@ -73,7 +73,7 @@ package de.wwsc.t3flex.vo.t3Standards
 			t3Table = "fe_users";
 			fields.fields[ "username" ] = String;
 			fields.fields[ "name" ] = String;
-			fields.fields[ "password" ] = String;
+			//fields.fields[ "password" ] = String;
 			fields.fields[ "usergroup" ] = String;
 			fields.fields[ "email" ] = String;
 			fields.fields[ "telephone" ] = String;
