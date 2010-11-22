@@ -2,7 +2,7 @@ package de.wwsc.t3flex.vo
 {
 	import de.wwsc.t3flex.T3Flex;
 	import de.wwsc.t3flex.vo.t3Standards.T3Fe_User;
-
+	
 	import mx.controls.Alert;
 
 	/**
@@ -221,7 +221,7 @@ package de.wwsc.t3flex.vo
 				}
 			}
 			// Throw a error if _baseurl is empty
-			if ( !_baseUrl )
+			if ( !_baseUrl  && !T3Flex.getInstance().config.enableOfflineCache)
 			{
 				throw new Error( "T3Flex - baseUrl is not set or empty. Please set up the baseUrl in t3Configuration" );
 			}

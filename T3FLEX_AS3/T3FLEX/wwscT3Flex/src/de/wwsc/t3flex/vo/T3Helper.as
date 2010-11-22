@@ -16,192 +16,192 @@ package de.wwsc.t3flex.vo
 	public class T3Helper
 	{
 
-		private static var _instance : T3Helper = new T3Helper();
+		private static var _instance:T3Helper=new T3Helper();
 
-		public static function getInstance() : T3Helper
+		public static function getInstance():T3Helper
 		{
 			return _instance;
 		}
 
 		public function T3Helper()
 		{
-			if ( _instance )
-				throw new Error( "This is a singleton-class and can only be accessed through T3HelpFunctions.getInstance()" );
+			if (   _instance   )
+				throw new Error(   "This is a singleton-class and can only be accessed through T3HelpFunctions.getInstance()"   );
 		}
 
-		private var keys : Object = {};
+		private var keys:Object={};
 
-		public function convertTimeStampToDate( timestamp : String ) : Date
+		public function convertTimeStampToDate(   timestamp:String   ):Date
 		{
-			var currDate : Date = new Date( Number( timestamp ) * 1000 ); //timestamp_in_seconds*1000 - if you use a result of PHP time function, which returns it in seconds, and Flash uses milliseconds
-			var D : Number = currDate.getDate();
-			var M : Number = currDate.getMonth() + 1; //because Returns the month (0 for January, 1 for February, and so on)
-			var Y : Number = currDate.getFullYear();
-			var theDate : String = ( M + "/" + D + "/" + Y );
+			var currDate:Date=new Date(   Number(   timestamp   ) * 1000   ); //timestamp_in_seconds*1000 - if you use a result of PHP time function, which returns it in seconds, and Flash uses milliseconds
+			var D:Number=currDate.getDate();
+			var M:Number=currDate.getMonth() + 1; //because Returns the month (0 for January, 1 for February, and so on)
+			var Y:Number=currDate.getFullYear();
+			var theDate:String=(   M + "/" + D + "/" + Y   );
 			//trace(theDate);
 			return currDate; // theDate;			
 		}
 
-		public function getClassFromDsId( ds : uint ) : Class
+		public function getClassFromDsId(   ds:uint   ):Class
 		{
-			var arr:Array = T3Flex.getInstance().config.tx_templavoila_dsArr;
-			for each ( var item : Object in arr )
+			var arr:Array=T3Flex.getInstance().config.tx_templavoila_dsArr;
+			for each (   var item:Object in arr   )
 			{
-				if ( ds == item.ds )
+				if (   ds == item.ds   )
 					return item.objClass
 			}
 			return null;
 		}
 
-		public function buildMMUidRelationString( arrayWithT3Elements : ArrayCollection,newUid : uint,action : String="ADD" ) : String
+		public function buildMMUidRelationString(   arrayWithT3Elements:ArrayCollection, newUid:uint, action:String="ADD"   ):String
 		{
-			var myString : String = "";
-			if ( arrayWithT3Elements.length == 1 )
+			var myString:String="";
+			if (   arrayWithT3Elements.length == 1   )
 			{
 				//trace("");
-				if ( arrayWithT3Elements[ 0 ].name == "No entry" )
+				if (   arrayWithT3Elements[   0   ].name == "No entry"   )
 				{
 					return newUid.toString();
 				}
 
 			}
-			for ( var i : uint = 0;i < arrayWithT3Elements.length;i++ )
+			for (   var i:uint=0; i < arrayWithT3Elements.length; i++   )
 			{
-				if ( action == "REMOVE" && newUid == arrayWithT3Elements[ i ].uid )
+				if (   action == "REMOVE" && newUid == arrayWithT3Elements[   i   ].uid   )
 				{
 					//trace("123")
 					// skip this item from string
 				}
 				else
 				{
-					if ( i > 0 )
+					if (   i > 0   )
 					{
-						myString += ",";
+						myString+=",";
 					}
 
-					myString += arrayWithT3Elements[ i ].uid
+					myString+=arrayWithT3Elements[   i   ].uid
 				}
 
 			}
-			if ( action == "ADD" )
+			if (   action == "ADD"   )
 			{
-				myString += "," + newUid
+				myString+="," + newUid
 
 			}
-			if ( myString.charAt( 0 ) == "," )
+			if (   myString.charAt(   0   ) == ","   )
 			{
-				myString = myString.substr( 1,myString.length - 1 )
+				myString=myString.substr(   1, myString.length - 1   )
 			}
 			return myString;
 		}
 
-		public function cleanAllHtml( str : String ) : String
+		public function cleanAllHtml(   str:String   ):String
 		{
-			if ( str )
+			if (   str   )
 			{
 				//str = escape( str );
 				//trace( "befor:" + str );
-				var pattern : RegExp = /<TEXTFORMAT.*?>/g;
-				var str : String = str.replace( pattern,"" );
+				var pattern:RegExp=/<TEXTFORMAT.*?>/g;
+				var str:String=str.replace(   pattern, ""   );
 
-				pattern = /<link.*?>/g;
-				str = str.replace( pattern,"" );
-				pattern = /<value index="vDEF".*?>/g;
-				str = str.replace( pattern,"" );
-				pattern = /<\/link>/g;
-				str = str.replace( pattern,"" );
+				pattern=/<link.*?>/g;
+				str=str.replace(   pattern, ""   );
+				pattern=/<value index="vDEF".*?>/g;
+				str=str.replace(   pattern, ""   );
+				pattern=/<\/link>/g;
+				str=str.replace(   pattern, ""   );
 
-				pattern = /<br \/>/g;
-				str = str.replace( pattern," " );
-				pattern = /<b>/g;
-				str = str.replace( pattern,"" );
-				pattern = /<\/b>/g;
-				str = str.replace( pattern,"" );
+				pattern=/<br \/>/g;
+				str=str.replace(   pattern, " "   );
+				pattern=/<b>/g;
+				str=str.replace(   pattern, ""   );
+				pattern=/<\/b>/g;
+				str=str.replace(   pattern, ""   );
 
-				pattern = /<i>/g;
-				str = str.replace( pattern,"" );
-				pattern = /<\/i>/g;
-				str = str.replace( pattern,"" );
+				pattern=/<i>/g;
+				str=str.replace(   pattern, ""   );
+				pattern=/<\/i>/g;
+				str=str.replace(   pattern, ""   );
 
-				pattern = /<p>/g;
-				str = str.replace( pattern,"" );
-				pattern = /<\/p>/g;
-				str = str.replace( pattern,"" );
+				pattern=/<p>/g;
+				str=str.replace(   pattern, ""   );
+				pattern=/<\/p>/g;
+				str=str.replace(   pattern, ""   );
 					//trace( "\nafter:" + str );
 
 			}
 			else
 			{
-				str = "";
+				str="";
 			}
 			return str;
 		}
 
-		public function replaceGermanUmlauts(str:String):String
+		public function replaceGermanUmlauts(   str:String   ):String
 		{
-			trace(this,str);
-			if (str)
+			trace(   this, str   );
+			if (   str   )
 			{
-				var pattern : RegExp;
+				var pattern:RegExp;
 				//trace( "befor:" + str );
-				pattern = //g;
-				str = str.replace( pattern,"ü" );
-				pattern = //g;
-				str = str.replace( pattern,"ä" );
+				pattern=//g;
+				str=str.replace(   pattern, "ü"   );
+				pattern=//g;
+				str=str.replace(   pattern, "ä"   );
 
 			}
 
 			return str
 		}
 
-		public function typo3RichtextHtmlToFlexTextfieldHtml( str : String ) : String
+		public function typo3RichtextHtmlToFlexTextfieldHtml(   str:String   ):String
 		{
-			if ( str )
+			if (   str   )
 			{
-				var pattern : RegExp;
+				var pattern:RegExp;
 				//trace( "befor:" + str );
-				pattern = /<br \/>/g;
-				str = str.replace( pattern,"\r" );
-				pattern = /’/g;
-				str = str.replace( pattern,"'" );
-				pattern = /<ul>/g;
-				str = str.replace( pattern,"\n" );
-				pattern = /<\/p>/g;
-				str = str.replace( pattern,"</p>\n" );
-				pattern = /<\/ul>/g;
-				str = str.replace( pattern,"" );
-				pattern = /<\/li>/g;
-				str = str.replace( pattern,"</li>\n" );
+				pattern=/<br \/>/g;
+				str=str.replace(   pattern, "\r"   );
+				pattern=/’/g;
+				str=str.replace(   pattern, "'"   );
+				pattern=/<ul>/g;
+				str=str.replace(   pattern, "\n"   );
+				pattern=/<\/p>/g;
+				str=str.replace(   pattern, "</p>\n"   );
+				pattern=/<\/ul>/g;
+				str=str.replace(   pattern, ""   );
+				pattern=/<\/li>/g;
+				str=str.replace(   pattern, "</li>\n"   );
 			}
 			else
 			{
-				str = ""
+				str=""
 			}
 			//trace( "after:" + str );
 			return str + "";
 		}
 
-		public function deliverObject( myObject : Object ) : Boolean
+		public function deliverObject(   myObject:Object   ):Boolean
 		{
-			var mySite : T3Flex = T3Flex.getInstance();
-			var deliver : Boolean = true;
+			var mySite:T3Flex=T3Flex.getInstance();
+			var deliver:Boolean=true;
 
 			// remove Objects with the wrong language
 			// only valid id deliverOnlySelectedLanguage is true
-			if ( mySite.config.deliverOnlySelectedLanguage && deliver )
+			if (   mySite.config.deliverOnlySelectedLanguage && deliver   )
 			{
-				if ( myObject.sys_language_uid != mySite.config.language.toString() && myObject.className != "de.wwsc.loe.vo::LoeProjectleader" )
+				if (   myObject.sys_language_uid != mySite.config.language.toString() && myObject.className != "de.wwsc.loe.vo::LoeProjectleader"   )
 				{
 					//trace("wrong Language - drop Element - uid:"+myObject.uid);
-					deliver = false;
+					deliver=false;
 				}
 			}
 			return deliver;
 		}
 
-		public function filterRemoveDuplicateUids( item : Object,idx : uint,arr : Array ) : Boolean
+		public function filterRemoveDuplicateUids(   item:Object, idx:uint, arr:Array   ):Boolean
 		{
-			if ( keys.hasOwnProperty( item.uid ))
+			if (   keys.hasOwnProperty(   item.uid   ))
 			{
 				/* If the keys Object already has this property,
 				 return false and discard this item. */
@@ -212,45 +212,45 @@ package de.wwsc.t3flex.vo
 				/* Else the keys Object does *NOT* already have
 				   this key, so add this item to the new data
 				 provider. */
-				keys[ item.uid ] = item;
+				keys[   item.uid   ]=item;
 				return true;
 			}
 		}
 
 
 
-		public function getArrayFromFilter( filterField : String,filterValue : Object,sourceArr : Array ) : Array
+		public function getArrayFromFilter(   filterField:String, filterValue:Object, sourceArr:Array   ):Array
 		{
-			var returnArr : Array = [];
-			for each ( var item : Object in sourceArr )
+			var returnArr:Array=[];
+			for each (   var item:Object in sourceArr   )
 			{
 				//trace( this,item[ filterField ],filterValue )
-				if ( filterValue == item[ filterField ])
+				if (   filterValue == item[   filterField   ])
 				{
-					returnArr.push( item );
+					returnArr.push(   item   );
 				}
 			}
 
 			return returnArr;
 		}
 
-		public function getArrayFromUidInArr( uid : uint,arr : Array ) : Array
+		public function getArrayFromUidInArr(   uid:uint, arr:Array   ):Array
 		{
-			return getArrayFromFilter( "uid",uid,arr );
+			return getArrayFromFilter(   "uid", uid, arr   );
 		}
 
-		public function getFlexFormElementsFromDS( datastructureId : uint,source : ArrayCollection ) : ArrayCollection
+		public function getFlexFormElementsFromDS(   datastructureId:uint, source:ArrayCollection   ):ArrayCollection
 		{
-			var myArray : ArrayCollection = new ArrayCollection;
-			var myObject : Object;
-			for ( var i : uint = 0;i < source.length;i++ )
+			var myArray:ArrayCollection=new ArrayCollection;
+			var myObject:Object;
+			for (   var i:uint=0; i < source.length; i++   )
 			{
-				myObject = new Object;
-				myObject = source[ i ];
+				myObject=new Object;
+				myObject=source[   i   ];
 				//trace(i,myObject.tx_templavoila_ds,myObject.uid)
-				if ( myObject.tx_templavoila_ds == datastructureId )
+				if (   myObject.tx_templavoila_ds == datastructureId   )
 				{
-					myArray.addItem( myObject );
+					myArray.addItem(   myObject   );
 				}
 			}
 
@@ -258,20 +258,20 @@ package de.wwsc.t3flex.vo
 
 		}
 
-		public function getImageNameFromImageField( myString : String ) : String
+		public function getImageNameFromImageField(   myString:String   ):String
 		{
 			//trace(myString);
-			var myArray : Array = myString.split( "," );
+			var myArray:Array=myString.split(   ","   );
 
-			return myArray[ 0 ];
+			return myArray[   0   ];
 		}
 
-		public function getIndexOfObjectFromUidInArr( uid : uint,arr : Array ) : int
+		public function getIndexOfObjectFromUidInArr(   uid:uint, arr:Array   ):int
 		{
-			var arrLength : uint = arr.length;
-			for ( var i : uint = 0;i < arrLength;i++ )
+			var arrLength:uint=arr.length;
+			for (   var i:uint=0; i < arrLength; i++   )
 			{
-				if ( uid == arr[ i ].uid )
+				if (   uid == arr[   i   ].uid   )
 				{
 					return i
 				}
@@ -280,64 +280,67 @@ package de.wwsc.t3flex.vo
 			return -1
 		}
 
-		public function getObjectFromUidInArr( uid : uint,arr : Array ) : Object
+		public function getObjectFromUidInArr(   uid:uint, arr:Array   ):Object
 		{
-			var arrLength : uint = arr.length;
-			for ( var i : uint = 0;i < arrLength;i++ )
+			if (   arr && uid   )
 			{
-				if ( uid == arr[ i ].uid )
+				var arrLength:uint=arr.length;
+				for (   var i:uint=0; i < arrLength; i++   )
 				{
-					return arr[ i ]
+					if (   uid == arr[   i   ].uid   )
+					{
+						return arr[   i   ]
+					}
 				}
 			}
 
 			return null;
 		}
 
-		public function getUidOfObjectFromNameInArr( name : String,arr : Array ) : int
+		public function getUidOfObjectFromNameInArr(   name:String, arr:Array   ):int
 		{
-			var arrLength : uint = arr.length;
-			for ( var i : uint = 0;i < arrLength;i++ )
+			var arrLength:uint=arr.length;
+			for (   var i:uint=0; i < arrLength; i++   )
 			{
-				if ( name == arr[ i ].name )
+				if (   name == arr[   i   ].name   )
 				{
-					return arr[ i ].uid
+					return arr[   i   ].uid
 				}
 			}
 
 			return -1
 		}
 
-		public function guessLanguageFromUrl() : String
+		public function guessLanguageFromUrl():String
 		{
-			var lang : String = "de";
+			var lang:String="de";
 
-			var myExternalUrl : QueryString = new QueryString();
-			if ( myExternalUrl.url )
+			var myExternalUrl:QueryString=new QueryString();
+			if (   myExternalUrl.url   )
 			{
-				var myUrl : String = myExternalUrl.url;
+				var myUrl:String=myExternalUrl.url;
 
 				//myUrl ="http://beta.languages-of-emotion.de/";
 				//myUrl ="http://beta.languages-of-emotion.de/en.html";
 				//myUrl ="http://beta.languages-of-emotion.de/en/graduate-program.html";
 				//myUrl ="http://beta.languages-of-emotion.de/index.php?id=1&L=1";
 
-				if ( myUrl.indexOf( "en.html" ) > 0 )
+				if (   myUrl.indexOf(   "en.html"   ) > 0   )
 				{
 					//trace ("yoyoyo")
-					lang = "en";
+					lang="en";
 				}
 
-				if ( myUrl.indexOf( "/en/" ) > 0 )
+				if (   myUrl.indexOf(   "/en/"   ) > 0   )
 				{
 					//trace ("yoyoyo1")
-					lang = "en";
+					lang="en";
 				}
 
-				if ( myUrl.indexOf( "&L=1" ) > 0 )
+				if (   myUrl.indexOf(   "&L=1"   ) > 0   )
 				{
 					//trace ("yoyoyo2")
-					lang = "en";
+					lang="en";
 				}
 			}
 			//trace(myUrl);
@@ -345,92 +348,93 @@ package de.wwsc.t3flex.vo
 
 		}
 
-		public function parse( source : T3Tt_content,target : Object ) : void
+		public function parse(   source:T3Tt_content, target:Object   ):void
 		{
 			//target = source 
-			for ( var key : String in source.fields.fields )
+			for (   var key:String in source.fields.fields   )
 			{
-				target[ key ] = source[ key ];
+				target[   key   ]=source[   key   ];
 			}
 			//trace()
 		}
 
-		public function convertTtContentObjToTVObj( sourceObj : T3Tt_content ) : Object
+		public function convertTtContentObjToTVObj(   sourceObj:T3Tt_content   ):Object
 		{
 			//trace( sourceObj.tvDsName,sourceObj.header,sourceObj.uid );
-			var newClass : Class = this.getClassFromDsId( sourceObj.tx_templavoila_ds );
-			if (newClass)
+			var newClass:Class=this.getClassFromDsId(   sourceObj.tx_templavoila_ds   );
+			if (   newClass   )
 			{
-				var newObj : Object = new newClass;
-				this.parse( sourceObj,newObj );
-				this.parseFlexFormIntoVars( newObj );
+				var newObj:Object=new newClass;
+				this.parse(   sourceObj, newObj   );
+				this.parseFlexFormIntoVars(   newObj   );
 				return newObj;
 
 			}
 			else
 			{
-				throw new Error ("T3Flex: Class was not found")
+				throw new Error(   "T3Flex: Class was not found"   )
 			}
 		}
 
-		private function parseFlexFormIntoVars( obj : Object ) : void
+		private function parseFlexFormIntoVars(   obj:Object   ):void
 		{
-			if ( obj.tx_templavoila_flex )
+			if (   obj.tx_templavoila_flex   )
 			{
 				try
 				{
-					var list : XMLList = obj.tx_templavoila_flex;
-					var myArray : XMLList = list.data.sheet.language.child( "field" );
-					var myObj : XML;
-					for each ( var item : *in myArray )
+					var list:XMLList=obj.tx_templavoila_flex;
+					var myArray:XMLList=list.data.sheet.language.child(   "field"   );
+					var myObj:XML;
+					for each (   var item:* in myArray   )
 					{
-						myObj = new XML();
-						myObj = item
+						myObj=new XML();
+						myObj=item
 
-						var target : Object = new Object;
-						this.recognizeTypeFromFlexform( myObj,obj );
+						var target:Object=new Object;
+						this.recognizeTypeFromFlexform(   myObj, obj   );
 					}
-				} catch ( e : Error )
+				}
+				catch (   e:Error   )
 				{
-					trace( e )
+					trace(   e   )
 				}
 			}
 		}
 
-		private function findStrInArr( str : String,arr : Array ) : Boolean
+		private function findStrInArr(   str:String, arr:Array   ):Boolean
 		{
-			for each ( var item : String in arr )
+			for each (   var item:String in arr   )
 			{
-				if ( item == str )
+				if (   item == str   )
 					return true
 			}
 			return false
 		}
 
-		private function recognizeTypeFromFlexform( source : XML,target : Object ) : void
+		private function recognizeTypeFromFlexform(   source:XML, target:Object   ):void
 		{
 
 			// TODO 
 			// needs extra work to tidy up
 			// normales Feld
 			//trace( this,source.attribute( "index" ));
-			if ( source.value )
+			if (   source.value   )
 			{
 				// ToDo:
 				// hier kann man deutlich verbessern, wie Texte erkannt werden
-				var test : XMLList =  source.value.@index
-				if ( test.length() > 1 )
+				var test:XMLList=source.value.@index
+				if (   test.length() > 1   )
 				{
-					if ( test[ 1 ] == "_TRANSFORM_vDEF.vDEFbase" )
+					if (   test[   1   ] == "_TRANSFORM_vDEF.vDEFbase"   )
 					{
-						target[ source.attribute( "index" )] = source.value[ 1 ];
+						target[   source.attribute(   "index"   )]=source.value[   1   ];
 					}
 				}
-				else if ( test[ 0 ] == "vDEF" )
+				else if (   test[   0   ] == "vDEF"   )
 				{
-					target[ source.attribute( "index" )] = source.value[ 0 ];
+					target[   source.attribute(   "index"   )]=source.value[   0   ];
 				}
-				else if ( test[ 0 ] == "_TOGGLE" )
+				else if (   test[   0   ] == "_TOGGLE"   )
 				{
 					// ignore this field
 				}
@@ -438,46 +442,46 @@ package de.wwsc.t3flex.vo
 				{
 					//var list : * = source[ 0 ][ 0 ]
 					//var list1 : * = source[ 0 ][ 0 ].el
-					var list2 : * = source[ 0 ][ 0 ].el[ 0 ]
+					var list2:*=source[   0   ][   0   ].el[   0   ]
 					//var list3 : * = source[ 0 ][ 0 ].el[ 0 ].section
 					//var list4 : * = source[ 0 ][ 0 ].el[ 0 ].field
 
-					target[ source.attribute( "index" )] = list2;
+					target[   source.attribute(   "index"   )]=list2;
 
 				}
 			}
 		}
 
-		public function setLocalLanguageFromUrl( debugLanguage : String="" ) : void
+		public function setLocalLanguageFromUrl(   debugLanguage:String=""   ):void
 		{
-			var myLanguageString : String = guessLanguageFromUrl();
-			if ( debugLanguage.length > 0 )
+			var myLanguageString:String=guessLanguageFromUrl();
+			if (   debugLanguage.length > 0   )
 			{
-				myLanguageString = debugLanguage;
+				myLanguageString=debugLanguage;
 			}
 
-			if ( myLanguageString == "en" )
+			if (   myLanguageString == "en"   )
 			{
-				ResourceManager.getInstance().localeChain = [ "en_US" ];
-				T3Flex.getInstance().config.language = 1;
+				ResourceManager.getInstance().localeChain=[   "en_US"   ];
+				T3Flex.getInstance().config.language=1;
 			}
 			else
 			{
-				ResourceManager.getInstance().localeChain = [ "de_DE" ];
+				ResourceManager.getInstance().localeChain=[   "de_DE"   ];
 			}
-			if ( T3Flex.getInstance().config.debug )
-				trace( "Language: " + ResourceManager.getInstance().getString( "resources","TEST" ));
+			if (   T3Flex.getInstance().config.debug   )
+				trace(   "Language: " + ResourceManager.getInstance().getString(   "resources", "TEST"   ));
 		}
 
-		public function addOneUidToMMRelations(targetField:String,newUid:uint):String
+		public function addOneUidToMMRelations(   targetField:String, newUid:uint   ):String
 		{
-			if (targetField=="0")
+			if (   targetField == "0"   )
 			{
 				targetField=newUid.toString();
 			}
 			else
 			{
-				targetField+=","+newUid.toString();
+				targetField+="," + newUid.toString();
 			}
 
 			return targetField;
@@ -486,22 +490,22 @@ package de.wwsc.t3flex.vo
 		}
 
 
-		public function get baseUrlOfDomain() : String
+		public function get baseUrlOfDomain():String
 		{
-			var localDomainLC : LocalConnection = new LocalConnection();
+			var localDomainLC:LocalConnection=new LocalConnection();
 			//ToDo:::
 			// This does not work with ports that differ from 80 
-			var myDomainName : String = localDomainLC.domain
+			var myDomainName:String=localDomainLC.domain
 
 
 			return myDomainName;
 		}
 
 
-		public function goToUrl( url : String,target : String="_blank" ) : void
+		public function goToUrl(   url:String, target:String="_blank"   ):void
 		{
-			var u : URLRequest = new URLRequest( url );
-			navigateToURL( u,target );
+			var u:URLRequest=new URLRequest(   url   );
+			navigateToURL(   u, target   );
 		}
 
 
@@ -509,11 +513,11 @@ package de.wwsc.t3flex.vo
 		 * Delivers the directory of the SWF-File
 		 * Might be moved to configuration or helper in the future
 		 */
-		public function get swfBaseDir() : String
+		public function get swfBaseDir():String
 		{
-			var myString : String = FlexGlobals.topLevelApplication.url;
-			var myPos : int = myString.lastIndexOf( "/" );
-			myString = myString.substr( 0,myPos + 1 );
+			var myString:String=FlexGlobals.topLevelApplication.url;
+			var myPos:int=myString.lastIndexOf(   "/"   );
+			myString=myString.substr(   0, myPos + 1   );
 
 			return myString
 

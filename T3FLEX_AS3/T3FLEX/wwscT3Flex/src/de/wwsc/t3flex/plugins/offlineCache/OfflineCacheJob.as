@@ -1,8 +1,9 @@
 package de.wwsc.t3flex.plugins.offlineCache
 {
+	import de.wwsc.shared.MonitorBusy;
 	import de.wwsc.t3flex.T3Flex;
 	import de.wwsc.t3flex.vo.T3Helper;
-
+	
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
@@ -41,8 +42,12 @@ package de.wwsc.t3flex.plugins.offlineCache
 				var url: String = "t3FlexCache/"+_controller.translateID(_offlineCacheDataQueryObj.t3FlexQueryStr);
 				trace( this,"FileLoaded",url,_offlineCacheDataQueryObj.t3FlexQueryStr );
 				_offlineCacheDataQueryObj.target.source = url;
-				if (_offlineCacheDataQueryObj.callback())
+				if (_offlineCacheDataQueryObj.callback)
 					_offlineCacheDataQueryObj.callback();
+				{
+					trace(this,"Empty callback",url,_offlineCacheDataQueryObj.t3FlexQueryStr)
+					MonitorBusy.getInstance().reset();
+				}
 			}
 		}
 

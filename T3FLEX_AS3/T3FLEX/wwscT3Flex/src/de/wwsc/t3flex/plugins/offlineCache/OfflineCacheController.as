@@ -6,7 +6,7 @@ import de.wwsc.t3flex.events.T3FlexEvent;
 public class OfflineCacheController
 {
 	
-	public var dirName : String = "t3flexcache";
+	public var dirName : String = "t3FlexCache";
 	
 	public var enableSwfStandalonePlayer : Boolean = false;
 	
