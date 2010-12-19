@@ -162,6 +162,10 @@ package de.wwsc.t3flex.vo
 				//trace( "befor:" + str );
 				pattern=/<br \/>/g;
 				str=str.replace(   pattern, "\r"   );
+				pattern=/<strong>/g;
+				str=str.replace(   pattern, "<b>"   );
+				pattern=/<\/strong>/g;
+				str=str.replace(   pattern, "</b>"   );
 				pattern=/’/g;
 				str=str.replace(   pattern, "'"   );
 				pattern=/<ul>/g;
@@ -372,7 +376,10 @@ package de.wwsc.t3flex.vo
 			}
 			else
 			{
-				throw new Error(   "T3Flex: Class was not found"   )
+				if (T3Flex.getInstance().config.debug)
+					throw new Error(   "T3Flex: Class was not found: "+sourceObj.tx_templavoila_ds   )
+
+				return null
 			}
 		}
 
