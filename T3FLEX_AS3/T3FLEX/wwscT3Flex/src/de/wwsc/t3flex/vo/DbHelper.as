@@ -369,7 +369,7 @@ package de.wwsc.t3flex.vo
 				}
 				catch(e:Error)
 				{
-					trace("T3FLEX Error",e.errorID,e.message);
+					trace("T3FLEX Error",e.errorID,e.message, e.getStackTrace());
 				}
 			}
 			//trace("4: "+String(getTimer()-startTime))

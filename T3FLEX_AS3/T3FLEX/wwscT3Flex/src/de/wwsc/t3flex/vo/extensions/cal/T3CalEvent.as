@@ -1,7 +1,7 @@
 package de.wwsc.t3flex.vo.extensions.cal
 {
 	import de.wwsc.t3flex.vo.t3Standards.T3DbElement;
-
+	
 	import flashx.textLayout.elements.TCYElement;
 
 	[Bindable]
@@ -24,13 +24,11 @@ package de.wwsc.t3flex.vo.extensions.cal
 		public var send_invitation:int;
 		public var tx_wwscfamilycockpit_active_during_holidays:int;
 		public var tx_wwscfamilycockpit_private:int;
+		public var tx_wwscfamilycockpit_linked_event:int;
+		public var tx_wwscfamilycockpit_reason:String;
 		public var rdate_type:int;
 		public var intrval:int;
-
-
-
-
-
+		public var status:int;
 
 		public function T3CalEvent()
 		{
@@ -48,9 +46,12 @@ package de.wwsc.t3flex.vo.extensions.cal
 			fields.fields["end_date"]=int;
 			fields.fields["tx_wwscfamilycockpit_active_during_holidays"]=int;
 			fields.fields["tx_wwscfamilycockpit_private"]=int;
+			fields.fields["tx_wwscfamilycockpit_reason"]=String;
+			fields.fields["tx_wwscfamilycockpit_linked_event"]=int;
 			fields.fields["rdate_type"]=int;
 			fields.fields["intrval"]=int;
 			fields.fields["location"]=String;
+			fields.fields["status"]=int;
 		}
 
 
